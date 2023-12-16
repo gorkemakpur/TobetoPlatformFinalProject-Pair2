@@ -7,17 +7,63 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Abstracts\" />
-    <Folder Include="Concretes\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
     <ProjectReference Include="..\Entities\Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Dtos\Announcement\Request\" />
+    <Folder Include="Dtos\Announcement\Response\" />
+    <Folder Include="Dtos\SyncCourse\Request\" />
+    <Folder Include="Dtos\SyncCourse\Response\" />
+    <Folder Include="Dtos\SyncCourseContent\Request\" />
+    <Folder Include="Dtos\SyncCourseContent\Response\" />
+    <Folder Include="Dtos\SyncCourseDepartment\Request\" />
+    <Folder Include="Dtos\SyncCourseDepartment\Response\" />
+    <Folder Include="Dtos\SyncCourseInstructor\Request\" />
+    <Folder Include="Dtos\SyncCourseInstructor\Response\" />
+    <Folder Include="Dtos\Survey\Request\" />
+    <Folder Include="Dtos\Survey\Response\" />
+    <Folder Include="Dtos\Application\Request\" />
+    <Folder Include="Dtos\Application\Response\" />
+    <Folder Include="Dtos\AsyncCourse\Request\" />
+    <Folder Include="Dtos\AsyncCourse\Response\" />
+    <Folder Include="Dtos\AsyncCourseContent\Request\" />
+    <Folder Include="Dtos\AsyncCourseContent\Response\" />
+    <Folder Include="Dtos\AsyncCourseDepartment\Request\" />
+    <Folder Include="Dtos\AsyncCourseDepartment\Response\" />
+    <Folder Include="Dtos\Category\Request\" />
+    <Folder Include="Dtos\Category\Response\" />
+    <Folder Include="Dtos\Certificate\Request\" />
+    <Folder Include="Dtos\Certificate\Response\" />
+    <Folder Include="Dtos\Competence\Request\" />
+    <Folder Include="Dtos\Competence\Response\" />
+    <Folder Include="Dtos\Department\Request\" />
+    <Folder Include="Dtos\Department\Response\" />
+    <Folder Include="Dtos\Education\Request\" />
+    <Folder Include="Dtos\Education\Response\" />
+    <Folder Include="Dtos\Experience\Request\" />
+    <Folder Include="Dtos\Experience\Response\" />
+    <Folder Include="Dtos\Language\Request\" />
+    <Folder Include="Dtos\Language\Response\" />
+    <Folder Include="Dtos\LanguageLevel\Request\" />
+    <Folder Include="Dtos\LanguageLevel\Response\" />
+    <Folder Include="Dtos\LanguageType\Request\" />
+    <Folder Include="Dtos\LanguageType\Response\" />
+    <Folder Include="Dtos\Situation\Request\" />
+    <Folder Include="Dtos\Situation\Response\" />
+    <Folder Include="Dtos\SocialMedia\Request\" />
+    <Folder Include="Dtos\SocialMedia\Response\" />
+    <Folder Include="Dtos\SocialMediaName\Request\" />
+    <Folder Include="Dtos\SocialMediaName\Response\" />
+    <Folder Include="Dtos\Student\Request\" />
+    <Folder Include="Dtos\Student\Response\" />
+    <Folder Include="Dtos\AnnouncementType\Request\" />
+    <Folder Include="Dtos\AnnouncementType\Response\" />
   </ItemGroup>
 
 </Project>

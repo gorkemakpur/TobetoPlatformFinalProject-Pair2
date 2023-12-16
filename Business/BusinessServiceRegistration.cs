@@ -15,9 +15,9 @@ namespace Business
         public static IServiceCollection AddBusinessServices(this IServiceCollection services)
         {
             services.AddScoped<IInstructorService, InstructorManager>();
-            //services.AddScoped<ICategoryService, CategoryManager>();
-            //services.AddScoped<ICategoryService, CategoryManager>();
 
+            //services.AddScoped<ICategoryService, CategoryManager>();
+            //services.AddScoped<ICategoryService, CategoryManager>();
 
             //services.AddSubClassesOfType(Assembly.GetExecutingAssembly(), typeof(BaseBusinessRules));
             //services.AddScoped<ProductBusinessRules>(); üstteki kod bu işleri hallediyor
