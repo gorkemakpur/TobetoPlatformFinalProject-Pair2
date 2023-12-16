@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace Entities.Concretes
 {
-    public class Survey : Entity<Guid>
+    public class AnnouncementType : Entity<Guid>
     {
+        public string Type { get; set; }
+
+        public List<Announcement>? Announcements { get; set; }
     }
 }

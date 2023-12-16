@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace Entities.Concretes
 {
-    public class Survey : Entity<Guid>
+    public class SocialMediaName : Entity<Guid>
     {
+        public string Name { get; set; }
+
+        public List<SocialMedia> SocialMedias { get; set; }
     }
 }
