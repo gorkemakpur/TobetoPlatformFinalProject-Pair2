@@ -13,6 +13,6 @@ namespace Entities.Concretes
         public string Url { get; set; }
         public string Name { get; set; }
 
-        public Student Student { get; set; }
+        public Student? Student { get; set; }
     }
 }

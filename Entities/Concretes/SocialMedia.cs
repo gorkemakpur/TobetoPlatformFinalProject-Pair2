@@ -13,7 +13,7 @@ namespace Entities.Concretes
         public Guid SocialMediaNameId { get; set; }
         public string Url { get; set; }
 
-        public Student Students { get; set; }
-        public SocialMediaName SocialMediaName { get; set; }
+        public Student? Students { get; set; }
+        public SocialMediaName? SocialMediaName { get; set; }
     }
 }

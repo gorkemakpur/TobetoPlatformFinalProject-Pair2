@@ -14,8 +14,8 @@ namespace Entities.Concretes
         public DateTime StartedDate { get; set; }
         public DateTime EndedDate { get; set; }
 
-        public Department Department { get; set; }
-        public SyncCourse SyncCourse { get; set; }
+        public Department? Department { get; set; }
+        public SyncCourse? SyncCourse { get; set; }
 
 
     }
