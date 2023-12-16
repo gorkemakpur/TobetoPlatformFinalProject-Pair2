@@ -16,8 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\Announcement\Request\" />
-    <Folder Include="Dtos\Announcement\Response\" />
     <Folder Include="Dtos\SyncCourse\Request\" />
     <Folder Include="Dtos\SyncCourse\Response\" />
     <Folder Include="Dtos\SyncCourseContent\Request\" />
@@ -62,8 +60,6 @@
     <Folder Include="Dtos\SocialMediaName\Response\" />
     <Folder Include="Dtos\Student\Request\" />
     <Folder Include="Dtos\Student\Response\" />
-    <Folder Include="Dtos\AnnouncementType\Request\" />
-    <Folder Include="Dtos\AnnouncementType\Response\" />
   </ItemGroup>
 
 </Project>
