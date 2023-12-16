@@ -28,4 +28,5 @@ namespace Business.Concretes
             return _mapper.Map<CreatedInstructorResponse>(createdInstructor);
         }
     }
+
 }
