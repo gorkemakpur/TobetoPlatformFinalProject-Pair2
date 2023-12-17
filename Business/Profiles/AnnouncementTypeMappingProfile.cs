@@ -12,13 +12,14 @@ using System.Threading.Tasks;
 
 namespace Business.Profiles
 {
-    public class AnnouncementTypeProfile : Profile
+    public class AnnouncementTypeMappingProfile : Profile
     {
-        public AnnouncementTypeProfile()
+        public AnnouncementTypeMappingProfile()
         {
             CreateMap<AnnouncementType, CreateAnnouncementTypeRequest>().ReverseMap();
             CreateMap<AnnouncementType, CreatedAnnouncementTypeResponse>().ReverseMap();
             CreateMap<AnnouncementType, GetListAnnouncementTypeResponse>().ReverseMap();
+
             CreateMap<IPaginate<AnnouncementType>, Paginate<GetListAnnouncementTypeResponse>>();
 
             CreateMap<CreatedAnnouncementTypeResponse, CreateAnnouncementTypeRequest>().ReverseMap();

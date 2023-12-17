@@ -8,6 +8,9 @@ using Core.DataAccess.Repositories;
 using DataAccess.Abstracts;
 using DataAccess.Concretes.EntityFramework;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Business.Concretes
 {
@@ -33,15 +36,47 @@ namespace Business.Concretes
             return createdAnnouncement;
         }
 
+        public async Task<DeletedAnnouncementResponse> Delete(DeleteAnnouncementRequest deleteAnnouncementRequest)
+        {
+            Announcement removeAnnouncement = await _announcementDal.GetAsync(predicate: a => a.Id == deleteAnnouncementRequest.Id);
+            await _announcementDal.DeleteAsync(removeAnnouncement);
+            DeletedAnnouncementResponse deletedAnnouncementResponse = _mapper.Map<DeletedAnnouncementResponse>(deleteAnnouncementRequest);
+            return deletedAnnouncementResponse;
+        }
+
+        //girilen id deki değer
+        public async Task<GetByIdAnnouncementResponse> GetById(Guid id)
+        {
+            var data = await _announcementDal.GetAsync(predicate: p => p.Id == id,
+                include: p => p.Include(p => p.AnnouncementType));
+
+            var result = _mapper.Map<GetByIdAnnouncementResponse>(data);
+            return result;
+        }
+
+        //Tüm veriler
         public async Task<IPaginate<GetListAnnouncementResponse>> GetList(PageRequest pageRequest)
         {
-            var data = await _announcementDal.GetListAsync(
+            //bağlantılı kısımları göstermek için include kullanıyoruz
+            //burada diğer tablodaki kısımı alamadım
+            var data = await _announcementDal.GetListAsync(include: p => p.Include(p => p.AnnouncementType),
                 index: 0,//pageRequest.PageIndex,
                 size: 10 //pageRequest.PageSize
                 );
 
             var result = _mapper.Map<Paginate<GetListAnnouncementResponse>>(data);
             return result;
+        }
+
+        public async Task<UpdatedAnnouncementResponse> Update(UpdateAnnouncementRequest updateAnnouncementRequest)
+        {
+            //bu kısıma bakılacak eksiklik var bütün değerleri girmeden istediğimiz değer ile update etme kısmına bakılacak
+            Announcement updateAnnouncement = await _announcementDal.GetAsync(p => p.Id == updateAnnouncementRequest.Id);
+            _mapper.Map(updateAnnouncementRequest, updateAnnouncement);
+            Announcement updatedAnnouncement = await _announcementDal.UpdateAsync(updateAnnouncement);
+            UpdatedAnnouncementResponse updatedAnnouncementResponse = _mapper.Map<UpdatedAnnouncementResponse>(updatedAnnouncement);
+
+            return updatedAnnouncementResponse;
         }
     }
 

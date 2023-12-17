@@ -9,6 +9,9 @@ namespace Business.Abstracts
     public interface IAnnouncementService
     {
         Task<CreatedAnnouncementResponse> Add(CreateAnnouncementRequest createAnnouncementRequest);
+        Task<DeletedAnnouncementResponse> Delete(DeleteAnnouncementRequest deleteAnnouncementRequest);
+        Task<UpdatedAnnouncementResponse> Update(UpdateAnnouncementRequest updateAnnouncementRequest);
         Task<IPaginate<GetListAnnouncementResponse>> GetList(PageRequest pageRequest);
+        Task<GetByIdAnnouncementResponse> GetById(Guid id);
     }
 }

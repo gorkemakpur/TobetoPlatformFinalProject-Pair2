@@ -1,4 +1,5 @@
 ﻿using Business.Abstracts;
+using Business.Dtos.Announcement.Request;
 using Business.Dtos.AnnouncementType.Request;
 using Business.Dtos.Instructor.Request;
 using Core.DataAccess.Paging;
@@ -18,14 +19,16 @@ namespace WebApi.Controllers
             _announcementTypeService = announcementTypeService;
         }
 
-        [HttpPost]
+
+        [HttpPost("add")]
         public async Task<IActionResult> Add([FromBody] CreateAnnouncementTypeRequest createAnnouncementTypeRequest)
         {
             var result = await _announcementTypeService.Add(createAnnouncementTypeRequest);
             return Ok(result);
         }
+ 
 
-        [HttpGet]
+        [HttpGet("getlist")]
         public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
         {
             var result = await _announcementTypeService.GetList(pageRequest);

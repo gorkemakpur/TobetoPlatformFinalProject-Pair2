@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Business.Dtos.Announcement.Response
 {
-    public class GetListAnnouncementResponse
+    public class GetByIdAnnouncementResponse
     {
-        public Guid Id { get; set; }    
         public Guid AnnouncementTypeId { get; set; }
         //AnnouncementType tablosunun type alanı 
         public string AnnouncementTypeType { get; set; }
