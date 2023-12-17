@@ -1,8 +1,15 @@
-﻿namespace Business.Abstracts
+﻿using Business.Dtos.Announcement.Request;
+using Business.Dtos.Announcement.Response;
+using Business.Dtos.AnnouncementType.Request;
+using Business.Dtos.AnnouncementType.Response;
+using Core.DataAccess.Paging;
+
+namespace Business.Abstracts
 {
     public interface IAnnouncementService
     {
-        // İlgili metotlar
+        Task<CreatedAnnouncementResponse> Add(CreateAnnouncementRequest createAnnouncementRequest);
+        Task<IPaginate<GetListAnnouncementResponse>> GetList(PageRequest pageRequest);
     }
 
 }
