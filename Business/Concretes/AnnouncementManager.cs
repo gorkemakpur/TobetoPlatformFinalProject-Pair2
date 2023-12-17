@@ -4,6 +4,7 @@ using Business.Dtos.Announcement.Request;
 using Business.Dtos.Announcement.Response;
 using Business.Dtos.AnnouncementType.Response;
 using Core.DataAccess.Paging;
+using Core.DataAccess.Repositories;
 using DataAccess.Abstracts;
 using DataAccess.Concretes.EntityFramework;
 using Entities.Concretes;

@@ -11,5 +11,4 @@ namespace Business.Abstracts
         Task<CreatedAnnouncementResponse> Add(CreateAnnouncementRequest createAnnouncementRequest);
         Task<IPaginate<GetListAnnouncementResponse>> GetList(PageRequest pageRequest);
     }
-
 }
