@@ -13,7 +13,7 @@ namespace DataAccess.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<Instructor> builder)
         {
-            //Tablo
+            //Tablomuz
             builder.ToTable("Instructors").HasKey(i => i.Id);
             //Sütunlar
             builder.Property(i => i.Id).HasColumnName("Id").IsRequired();
