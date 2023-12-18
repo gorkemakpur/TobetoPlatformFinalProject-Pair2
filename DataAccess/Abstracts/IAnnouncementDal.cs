@@ -10,7 +10,7 @@ namespace DataAccess.Abstracts
 {
     public interface IAnnouncementDal : IRepository<Announcement, Guid>, IAsyncRepository<Announcement, Guid>
     {
-        //Umut deneme 123
+
     }
 
 }
