@@ -14,6 +14,7 @@ namespace Business
     {
         public static IServiceCollection AddBusinessServices(this IServiceCollection services)
         {
+            //yorum satırı 123
             services.AddScoped<IInstructorService, InstructorManager>();
 
             services.AddScoped<IAnnouncementService, AnnouncementManager>();

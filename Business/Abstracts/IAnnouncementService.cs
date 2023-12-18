@@ -13,5 +13,6 @@ namespace Business.Abstracts
         Task<UpdatedAnnouncementResponse> Update(UpdateAnnouncementRequest updateAnnouncementRequest);
         Task<IPaginate<GetListAnnouncementResponse>> GetList(PageRequest pageRequest);
         Task<GetByIdAnnouncementResponse> GetById(Guid id);
+
     }
 }
