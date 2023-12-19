@@ -8,9 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AnnouncementTypesController : ControllerBase
+    public class AnnouncementTypesController : BaseController
     {
         IAnnouncementTypeService _announcementTypeService;
 
@@ -20,18 +18,37 @@ namespace WebApi.Controllers
         }
 
 
-        [HttpPost("add")]
+        [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateAnnouncementTypeRequest createAnnouncementTypeRequest)
         {
-            var result = await _announcementTypeService.Add(createAnnouncementTypeRequest);
+            var result = await _announcementTypeService.AddAsync(createAnnouncementTypeRequest);
             return Ok(result);
         }
- 
 
-        [HttpGet("getlist")]
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateAnnouncementTypeRequest updateAnnouncementTypeRequest)
+        {
+            var result = await _announcementTypeService.UpdateAsync(updateAnnouncementTypeRequest);
+            return Ok(result);
+        }
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody] DeleteAnnouncementTypeRequest deleteAnnouncementTypeRequest)
+        {
+            var result = await _announcementTypeService.DeleteAsync(deleteAnnouncementTypeRequest);
+            return Ok(result);
+        }
+
+
+        [HttpGet]
         public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
         {
-            var result = await _announcementTypeService.GetList(pageRequest);
+            var result = await _announcementTypeService.GetListAsync(pageRequest);
+            return Ok(result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetById([FromQuery] Guid id)
+        {
+            var result = await _announcementTypeService.GetByIdAsync(id);
             return Ok(result);
         }
 
