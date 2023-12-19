@@ -19,6 +19,12 @@ namespace DataAccess
 
             services.AddDbContext<TobetoPlatformFinalProjectContext>(options => options.UseSqlServer(configuration.GetConnectionString("TobetoPlatformFinalProject")));
 
+            services.AddScoped<IAnnouncementUserDal, EfAnnouncementUserDal>();
+            services.AddScoped<ICityDal, EfCityDal>();
+            services.AddScoped<IDistrictDal, EfDistrictDal>();
+            services.AddScoped<IUserDal, EfUserDal>();
+            services.AddScoped<IRoleDal, EfRoleDal>();
+
             services.AddScoped<IInstructorDal, EfInstructorDal>();
             services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();
             services.AddScoped<IAnnouncementTypeDal, EfAnnouncementTypeDal>();

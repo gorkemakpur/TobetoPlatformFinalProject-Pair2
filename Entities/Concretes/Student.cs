@@ -10,20 +10,10 @@ namespace Entities.Concretes
     public class Student : Entity<Guid>
     {
         public Guid DepartmentId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string ConfirmPassword { get; set; }
-        public DateTime BirthDate { get; set; }
-        public string NationalityId { get; set; }
-        public int PhoneNumber { get; set; }
-        public string About { get; set; }
-        public string Country { get; set; }
-        public string City { get; set; }
-        public string District { get; set; }
-        public string AddressDescription { get; set; }
+        public Guid UserId { get; set; }
 
+
+        public User? User{ get; set; }
         public Department? Department { get; set; }
         public List<Application>? Applications { get; set; }
         public List<Language>? Languages { get; set; }

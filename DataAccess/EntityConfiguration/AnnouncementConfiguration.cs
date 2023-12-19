@@ -20,7 +20,6 @@ namespace DataAccess.EntityConfiguration
             builder.Property(i => i.Id).HasColumnName("Id").IsRequired();
             builder.Property(i => i.AnnouncementTypeId).HasColumnName("AnnouncementTypeId").IsRequired();
             builder.Property(i => i.Description).HasColumnName("Description").IsRequired();
-            builder.Property(i => i.IsRead).HasColumnName("IsRead").IsRequired();
             builder.Property(i => i.SendDate).HasColumnName("SendDate").IsRequired();
 
             //İlişki

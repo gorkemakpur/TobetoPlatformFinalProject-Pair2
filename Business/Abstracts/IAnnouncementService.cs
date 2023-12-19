@@ -3,6 +3,7 @@ using Business.Dtos.Announcement.Response;
 using Business.Dtos.AnnouncementType.Request;
 using Business.Dtos.AnnouncementType.Response;
 using Core.DataAccess.Paging;
+using Entities.Concretes;
 
 namespace Business.Abstracts
 {
@@ -13,6 +14,5 @@ namespace Business.Abstracts
         Task<UpdatedAnnouncementResponse> UpdateAsync(UpdateAnnouncementRequest updateAnnouncementRequest);
         Task<IPaginate<GetListAnnouncementResponse>> GetListAsync(PageRequest pageRequest);
         Task<GetByIdAnnouncementResponse> GetByIdAsync(Guid id);
-
     }
 }

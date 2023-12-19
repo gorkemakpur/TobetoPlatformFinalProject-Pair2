@@ -12,9 +12,9 @@ namespace Entities.Concretes
         public Guid AnnouncementTypeId { get; set; }
         public string Description { get; set; }
         public DateTime SendDate { get; set; } = DateTime.Now;
-        public bool IsRead { get; set; } = false;
 
         public AnnouncementType? AnnouncementType { get; set; }
+        public List<AnnouncementUser>? AnnouncementUsers { get; set; }
 
     }
 }

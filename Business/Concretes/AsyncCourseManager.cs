@@ -17,5 +17,4 @@ namespace Business.Concretes
 
         // İlgili metotlar
     }
-
 }

@@ -1,5 +1,6 @@
 ﻿using Business.Abstracts;
 using Business.Concretes;
+using DataAccess.Abstracts;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Business
@@ -8,6 +9,11 @@ namespace Business
     {
         public static IServiceCollection AddBusinessServices(this IServiceCollection services)
         {
+            services.AddScoped<IAnnouncementUserService, AnnouncementUserManager>();
+            services.AddScoped<ICityService, CityManager>();
+            services.AddScoped<IDistrictService, DistrictManager>();
+            services.AddScoped<IUserService, UserManager>();
+            services.AddScoped<IRoleService, RoleManager>();
 
             services.AddScoped<IInstructorService, InstructorManager>();
             services.AddScoped<IAnnouncementService, AnnouncementManager>();
