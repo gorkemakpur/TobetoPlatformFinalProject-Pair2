@@ -13,7 +13,7 @@ namespace Business.Concretes
         {
             _competenceDal = competenceDal;
             _mapper = mapper;
-        }
+        }  
 
         // İlgili metotlar
     }

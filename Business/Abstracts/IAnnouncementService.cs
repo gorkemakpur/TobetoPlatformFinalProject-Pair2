@@ -8,11 +8,11 @@ namespace Business.Abstracts
 {
     public interface IAnnouncementService
     {
-        Task<CreatedAnnouncementResponse> Add(CreateAnnouncementRequest createAnnouncementRequest);
-        Task<DeletedAnnouncementResponse> Delete(DeleteAnnouncementRequest deleteAnnouncementRequest);
-        Task<UpdatedAnnouncementResponse> Update(UpdateAnnouncementRequest updateAnnouncementRequest);
-        Task<IPaginate<GetListAnnouncementResponse>> GetList(PageRequest pageRequest);
-        Task<GetByIdAnnouncementResponse> GetById(Guid id);
+        Task<CreatedAnnouncementResponse> AddAsync(CreateAnnouncementRequest createAnnouncementRequest);
+        Task<DeletedAnnouncementResponse> DeleteAsync(DeleteAnnouncementRequest deleteAnnouncementRequest);
+        Task<UpdatedAnnouncementResponse> UpdateAsync(UpdateAnnouncementRequest updateAnnouncementRequest);
+        Task<IPaginate<GetListAnnouncementResponse>> GetListAsync(PageRequest pageRequest);
+        Task<GetByIdAnnouncementResponse> GetByIdAsync(Guid id);
 
     }
 }

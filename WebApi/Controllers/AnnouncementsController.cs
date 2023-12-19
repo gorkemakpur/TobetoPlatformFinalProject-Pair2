@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AnnouncementsController : ControllerBase
+    //controller oluştururken burası basecontrollerdan miras alıp otomatik controller olacak şekilde tasarlandı
+    //düz class oluşturduktan sonra basecontroller üzerinden miras alıp hızlıca onun api olduğunu tanıtabiliriz
+    public class AnnouncementsController : BaseController
     {
         IAnnouncementService _announcementService;
 
@@ -18,36 +18,37 @@ namespace WebApi.Controllers
             _announcementService = announcementService;
         }
 
-        [HttpDelete("delete")]
+        [HttpDelete]
         public async Task<IActionResult> Delete([FromBody] DeleteAnnouncementRequest DeleteAnnouncementRequest)
         {
-            var result = await _announcementService.Delete(DeleteAnnouncementRequest);
+            var result = await _announcementService.DeleteAsync(DeleteAnnouncementRequest);
             return Ok(result);
         }
-        [HttpPost("add")]
+        [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateAnnouncementRequest createAnnouncementRequest)
         {
-            var result = await _announcementService.Add(createAnnouncementRequest);
+            var result = await _announcementService.AddAsync(createAnnouncementRequest);
             return Ok(result);
         }
-        [HttpGet("getlist")]
+
+        [HttpGet]
         public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
         {
-            var result = await _announcementService.GetList(pageRequest);
+            var result = await _announcementService.GetListAsync(pageRequest);
             return Ok(result);
         }
 
-        [HttpGet("getbyid")]
+        [HttpGet]
         public async Task<IActionResult> GetById([FromQuery]Guid id)
         {
-            var result = await _announcementService.GetById(id);
+            var result = await _announcementService.GetByIdAsync(id);
             return Ok(result);
         }
 
-        [HttpPost("update")]
+        [HttpPost]
         public async Task<IActionResult> Update([FromQuery] UpdateAnnouncementRequest updateAnnouncementRequest)
         {
-            var result = await _announcementService.Update(updateAnnouncementRequest);
+            var result = await _announcementService.UpdateAsync(updateAnnouncementRequest);
             return Ok(result);
         }
     }

@@ -25,7 +25,7 @@ namespace Business.Concretes
             _mapper = mapper;
         }
 
-        public async Task<CreatedAnnouncementResponse> Add(CreateAnnouncementRequest createAnnouncementRequest)
+        public async Task<CreatedAnnouncementResponse> AddAsync(CreateAnnouncementRequest createAnnouncementRequest)
         {
             //announcement türünde bir nesne oluştur mapper içerisinde createannouncementrequesti Announcement'e maple değeri değişkene ata 
             Announcement addAnnouncement = _mapper.Map<Announcement>(createAnnouncementRequest);
@@ -36,7 +36,7 @@ namespace Business.Concretes
             return createdAnnouncement;
         }
 
-        public async Task<DeletedAnnouncementResponse> Delete(DeleteAnnouncementRequest deleteAnnouncementRequest)
+        public async Task<DeletedAnnouncementResponse> DeleteAsync(DeleteAnnouncementRequest deleteAnnouncementRequest)
         {
             Announcement removeAnnouncement = await _announcementDal.GetAsync(predicate: a => a.Id == deleteAnnouncementRequest.Id);
             await _announcementDal.DeleteAsync(removeAnnouncement);
@@ -45,7 +45,7 @@ namespace Business.Concretes
         }
 
         //girilen id deki değer
-        public async Task<GetByIdAnnouncementResponse> GetById(Guid id)
+        public async Task<GetByIdAnnouncementResponse> GetByIdAsync(Guid id)
         {
             var data = await _announcementDal.GetAsync(predicate: p => p.Id == id,
                 include: p => p.Include(p => p.AnnouncementType));
@@ -55,7 +55,7 @@ namespace Business.Concretes
         }
 
         //Tüm veriler
-        public async Task<IPaginate<GetListAnnouncementResponse>> GetList(PageRequest pageRequest)
+        public async Task<IPaginate<GetListAnnouncementResponse>> GetListAsync(PageRequest pageRequest)
         {
             //bağlantılı kısımları göstermek için include kullanıyoruz
             //burada diğer tablodaki kısımı alamadım
@@ -68,7 +68,7 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<UpdatedAnnouncementResponse> Update(UpdateAnnouncementRequest updateAnnouncementRequest)
+        public async Task<UpdatedAnnouncementResponse> UpdateAsync(UpdateAnnouncementRequest updateAnnouncementRequest)
         {
             //bu kısıma bakılacak eksiklik var bütün değerleri girmeden istediğimiz değer ile update etme kısmına bakılacak
             Announcement updateAnnouncement = await _announcementDal.GetAsync(p => p.Id == updateAnnouncementRequest.Id);
