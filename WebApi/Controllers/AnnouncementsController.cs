@@ -45,7 +45,7 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task<IActionResult> Update([FromQuery] UpdateAnnouncementRequest updateAnnouncementRequest)
         {
             var result = await _announcementService.UpdateAsync(updateAnnouncementRequest);
