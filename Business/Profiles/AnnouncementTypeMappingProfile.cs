@@ -16,13 +16,24 @@ namespace Business.Profiles
     {
         public AnnouncementTypeMappingProfile()
         {
+            //create
             CreateMap<AnnouncementType, CreateAnnouncementTypeRequest>().ReverseMap();
             CreateMap<AnnouncementType, CreatedAnnouncementTypeResponse>().ReverseMap();
-            CreateMap<AnnouncementType, GetListAnnouncementTypeResponse>().ReverseMap();
-
-            CreateMap<IPaginate<AnnouncementType>, Paginate<GetListAnnouncementTypeResponse>>();
-
             CreateMap<CreatedAnnouncementTypeResponse, CreateAnnouncementTypeRequest>().ReverseMap();
+            //get
+            CreateMap<AnnouncementType, GetListAnnouncementTypeResponse>().ReverseMap();
+            CreateMap<AnnouncementType, GetByIdAnnouncementTypeResponse>().ReverseMap();
+            CreateMap<IPaginate<AnnouncementType>, Paginate<GetListAnnouncementTypeResponse>>();
+            //update
+            CreateMap<AnnouncementType, UpdateAnnouncementTypeRequest>().ReverseMap();
+            CreateMap<AnnouncementType, UpdatedAnnouncementTypeResponse>().ReverseMap();
+            CreateMap<UpdatedAnnouncementTypeResponse, UpdateAnnouncementTypeRequest>().ReverseMap();
+            //delete
+            CreateMap<DeleteAnnouncementTypeRequest, DeletedAnnouncementTypeResponse>().ReverseMap();
+
+
+
+
         }
 
     }
