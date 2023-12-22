@@ -24,6 +24,7 @@ public class LanguageConfiguration : IEntityTypeConfiguration<Language>
            .WithMany(ll => ll.Languages)
            .HasForeignKey(l => l.LanguageLevelId);
 
+
         builder.HasQueryFilter(l => !l.DeletedDate.HasValue);
     }
 }

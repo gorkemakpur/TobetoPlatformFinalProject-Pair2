@@ -46,12 +46,8 @@
     <Folder Include="Dtos\Education\Response\" />
     <Folder Include="Dtos\Experience\Request\" />
     <Folder Include="Dtos\Experience\Response\" />
-    <Folder Include="Dtos\Language\Request\" />
-    <Folder Include="Dtos\Language\Response\" />
     <Folder Include="Dtos\LanguageLevel\Request\" />
     <Folder Include="Dtos\LanguageLevel\Response\" />
-    <Folder Include="Dtos\Situation\Request\" />
-    <Folder Include="Dtos\Situation\Response\" />
     <Folder Include="Dtos\SocialMedia\Request\" />
     <Folder Include="Dtos\SocialMedia\Response\" />
     <Folder Include="Dtos\SocialMediaName\Request\" />
