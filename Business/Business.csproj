@@ -52,8 +52,6 @@
     <Folder Include="Dtos\SocialMedia\Response\" />
     <Folder Include="Dtos\SocialMediaName\Request\" />
     <Folder Include="Dtos\SocialMediaName\Response\" />
-    <Folder Include="Dtos\Student\Request\" />
-    <Folder Include="Dtos\Student\Response\" />
   </ItemGroup>
 
 </Project>
