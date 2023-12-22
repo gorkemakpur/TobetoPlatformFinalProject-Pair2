@@ -20,8 +20,6 @@
     <Folder Include="Dtos\AnnouncementUser\Response\" />
     <Folder Include="Dtos\District\Request\" />
     <Folder Include="Dtos\District\Response\" />
-    <Folder Include="Dtos\Role\Request\" />
-    <Folder Include="Dtos\Role\Response\" />
     <Folder Include="Dtos\City\Request\" />
     <Folder Include="Dtos\City\Response\" />
     <Folder Include="Dtos\SyncCourse\Request\" />
@@ -52,8 +50,6 @@
     <Folder Include="Dtos\Language\Response\" />
     <Folder Include="Dtos\LanguageLevel\Request\" />
     <Folder Include="Dtos\LanguageLevel\Response\" />
-    <Folder Include="Dtos\LanguageType\Request\" />
-    <Folder Include="Dtos\LanguageType\Response\" />
     <Folder Include="Dtos\Situation\Request\" />
     <Folder Include="Dtos\Situation\Response\" />
     <Folder Include="Dtos\SocialMedia\Request\" />
