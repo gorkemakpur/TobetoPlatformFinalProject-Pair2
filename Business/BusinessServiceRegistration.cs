@@ -1,6 +1,5 @@
 ﻿using Business.Abstracts;
 using Business.Concretes;
-using DataAccess.Abstracts;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Business
