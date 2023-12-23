@@ -24,7 +24,6 @@ namespace DataAccess
             services.AddScoped<IDistrictDal, EfDistrictDal>();
             services.AddScoped<IUserDal, EfUserDal>();
             services.AddScoped<IRoleDal, EfRoleDal>();
-
             services.AddScoped<IInstructorDal, EfInstructorDal>();
             services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();
             services.AddScoped<IAnnouncementTypeDal, EfAnnouncementTypeDal>();

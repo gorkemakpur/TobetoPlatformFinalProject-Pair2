@@ -2,6 +2,7 @@
 using Business.Profiles;
 using Business;
 using DataAccess;
+using AutoMapper;
 
 namespace WebApi
 {

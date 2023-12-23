@@ -31,10 +31,6 @@ namespace Business.Profiles
             //update
             CreateMap<Announcement, UpdateAnnouncementRequest>().ReverseMap();
             CreateMap<UpdateAnnouncementRequest, UpdatedAnnouncementResponse>().ReverseMap();
-
-
-
-
         }
     }
 }

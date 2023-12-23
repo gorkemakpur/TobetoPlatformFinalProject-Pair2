@@ -29,8 +29,10 @@ namespace Business.Concretes
         {
             //announcement türünde bir nesne oluştur mapper içerisinde createannouncementrequesti Announcement'e maple değeri değişkene ata 
             Announcement addAnnouncement = _mapper.Map<Announcement>(createAnnouncementRequest);
+
             //bir response değişkeni oluştur           yukarıda aldığımız veriyi ekle ve değişkene dönen değeri al 
             Announcement createdAnnouncementResponse = await _announcementDal.AddAsync(addAnnouncement);
+           
             //son olarak request ile response'u maple
             CreatedAnnouncementResponse createdAnnouncement = _mapper.Map<CreatedAnnouncementResponse>(createdAnnouncementResponse);
             return createdAnnouncement;
@@ -39,16 +41,21 @@ namespace Business.Concretes
         public async Task<DeletedAnnouncementResponse> DeleteAsync(DeleteAnnouncementRequest deleteAnnouncementRequest)
         {
             Announcement removeAnnouncement = await _announcementDal.GetAsync(predicate: a => a.Id == deleteAnnouncementRequest.Id);
+
             await _announcementDal.DeleteAsync(removeAnnouncement);
+
             DeletedAnnouncementResponse deletedAnnouncementResponse = _mapper.Map<DeletedAnnouncementResponse>(deleteAnnouncementRequest);
+
             return deletedAnnouncementResponse;
         }
 
         //girilen id deki değer
         public async Task<GetByIdAnnouncementResponse> GetByIdAsync(Guid id)
         {
-            var data = await _announcementDal.GetAsync(predicate: p => p.Id == id,
-                include: p => p.Include(p => p.AnnouncementType));
+            var data = await _announcementDal.GetAsync(
+                predicate: p => p.Id == id,
+                include: p => p.Include(p => p.AnnouncementType
+                ));
 
             var result = _mapper.Map<GetByIdAnnouncementResponse>(data);
             return result;
@@ -72,8 +79,11 @@ namespace Business.Concretes
         {
             //bu kısıma bakılacak eksiklik var bütün değerleri girmeden istediğimiz değer ile update etme kısmına bakılacak
             Announcement updateAnnouncement = await _announcementDal.GetAsync(p => p.Id == updateAnnouncementRequest.Id);
+
             _mapper.Map(updateAnnouncementRequest, updateAnnouncement);
+
             Announcement updatedAnnouncement = await _announcementDal.UpdateAsync(updateAnnouncement);
+
             UpdatedAnnouncementResponse updatedAnnouncementResponse = _mapper.Map<UpdatedAnnouncementResponse>(updatedAnnouncement);
 
             return updatedAnnouncementResponse;

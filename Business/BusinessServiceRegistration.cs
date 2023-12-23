@@ -14,7 +14,6 @@ namespace Business
             services.AddScoped<IDistrictService, DistrictManager>();
             services.AddScoped<IUserService, UserManager>();
             services.AddScoped<IRoleService, RoleManager>();
-
             services.AddScoped<IInstructorService, InstructorManager>();
             services.AddScoped<IAnnouncementService, AnnouncementManager>();
             services.AddScoped<IAnnouncementTypeService, AnnouncementTypeManager>();
