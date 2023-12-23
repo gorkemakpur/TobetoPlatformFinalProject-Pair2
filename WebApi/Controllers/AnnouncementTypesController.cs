@@ -6,6 +6,7 @@ using Core.DataAccess.Paging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace WebApi.Controllers
 {
     public class AnnouncementTypesController : BaseController
@@ -25,12 +26,15 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpPut]
+
+        [HttpPost]
         public async Task<IActionResult> Update([FromBody] UpdateAnnouncementTypeRequest updateAnnouncementTypeRequest)
         {
             var result = await _announcementTypeService.UpdateAsync(updateAnnouncementTypeRequest);
             return Ok(result);
         }
+
+
         [HttpDelete]
         public async Task<IActionResult> Delete([FromBody] DeleteAnnouncementTypeRequest deleteAnnouncementTypeRequest)
         {
@@ -45,6 +49,8 @@ namespace WebApi.Controllers
             var result = await _announcementTypeService.GetListAsync(pageRequest);
             return Ok(result);
         }
+
+
         [HttpGet]
         public async Task<IActionResult> GetById([FromQuery] Guid id)
         {

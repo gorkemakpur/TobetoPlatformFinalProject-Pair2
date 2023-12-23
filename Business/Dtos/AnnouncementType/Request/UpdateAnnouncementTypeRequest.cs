@@ -9,6 +9,6 @@ namespace Business.Dtos.AnnouncementType.Request
     public class UpdateAnnouncementTypeRequest
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
+        public string Type { get; set; }
     }
 }
