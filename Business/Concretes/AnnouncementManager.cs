@@ -30,7 +30,7 @@ namespace Business.Concretes
             //announcement türünde bir nesne oluştur mapper içerisinde createannouncementrequesti Announcement'e maple değeri değişkene ata 
             Announcement addAnnouncement = _mapper.Map<Announcement>(createAnnouncementRequest);
 
-            //bir response değişkeni oluştur           yukarıda aldığımız veriyi ekle ve değişkene dönen değeri al 
+            //bir response değişkeni oluştur            yukarıda aldığımız veriyi ekle ve değişkene dönen değeri al 
             Announcement createdAnnouncementResponse = await _announcementDal.AddAsync(addAnnouncement);
            
             //son olarak request ile response'u maple
