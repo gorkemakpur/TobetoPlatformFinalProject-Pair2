@@ -34,8 +34,6 @@
     <Folder Include="Dtos\SyncCourseInstructor\Response\" />
     <Folder Include="Dtos\Survey\Request\" />
     <Folder Include="Dtos\Survey\Response\" />
-    <Folder Include="Dtos\AsyncCourse\Request\" />
-    <Folder Include="Dtos\AsyncCourse\Response\" />
     <Folder Include="Dtos\AsyncCourseContent\Request\" />
     <Folder Include="Dtos\AsyncCourseContent\Response\" />
     <Folder Include="Dtos\AsyncCourseDepartment\Request\" />
