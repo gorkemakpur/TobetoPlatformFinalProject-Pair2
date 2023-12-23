@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Dtos.AsyncCourse.Response
+namespace Business.Dtos.AsyncCourse.Request
 {
-    public class CreatedAsyncCourseResponse
+    public class UpdateAsyncCourseRequest
     {
+        public Guid Id { get; set; }
         public Guid CategoryId { get; set; }
         public string Name { get; set; }
     }

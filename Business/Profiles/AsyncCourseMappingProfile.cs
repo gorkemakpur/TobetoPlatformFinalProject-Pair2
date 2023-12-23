@@ -1,4 +1,10 @@
 ﻿using AutoMapper;
+using Business.Dtos.Announcement.Request;
+using Business.Dtos.Announcement.Response;
+using Business.Dtos.AsyncCourse.Request;
+using Business.Dtos.AsyncCourse.Response;
+using Core.DataAccess.Paging;
+using Entities.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,19 +15,21 @@ namespace Business.Profiles
 {
     public class AsyncCourseMappingProfile : Profile
     {
-        
-        ////create
-        //CreateMap<Announcement, CreateAnnouncementRequest>().ReverseMap();
-        //CreateMap<Announcement, CreatedAnnouncementResponse>().ReverseMap();
-        //CreateMap<CreatedAnnouncementResponse, CreateAnnouncementRequest>().ReverseMap();
-        ////list
-        //CreateMap<Announcement, GetListAnnouncementResponse>().ReverseMap();
-        //CreateMap<Announcement, GetByIdAnnouncementResponse>().ReverseMap();
-        //CreateMap<IPaginate<Announcement>, Paginate<GetListAnnouncementResponse>>();
-        //    //delete
-        //    CreateMap<DeleteAnnouncementRequest, DeletedAnnouncementResponse>().ReverseMap();
-        ////update
-        //CreateMap<Announcement, UpdateAnnouncementRequest>().ReverseMap();
-        //CreateMap<UpdateAnnouncementRequest, UpdatedAnnouncementResponse>().ReverseMap();
+        public AsyncCourseMappingProfile()
+        {
+            //create
+            CreateMap<AsyncCourse, CreateAsyncCourseRequest>().ReverseMap();
+            CreateMap<AsyncCourse, CreatedAsyncCourseResponse>().ReverseMap();
+            CreateMap<CreatedAsyncCourseResponse, CreateAsyncCourseRequest>().ReverseMap();
+            //list
+            CreateMap<AsyncCourse, GetListAsyncCourseResponse>().ReverseMap();
+            CreateMap<AsyncCourse, GetByIdAsyncCourseResponse>().ReverseMap();
+            CreateMap<IPaginate<AsyncCourse>, Paginate<GetListAsyncCourseResponse>>();
+            //delete
+            CreateMap<DeleteAsyncCourseRequest, DeletedAsyncCourseResponse>().ReverseMap();
+            //update
+            CreateMap<AsyncCourse, UpdateAsyncCourseRequest>().ReverseMap();
+            CreateMap<UpdateAsyncCourseRequest, UpdatedAsyncCourseResponse>().ReverseMap();
+        }
     }
 }
