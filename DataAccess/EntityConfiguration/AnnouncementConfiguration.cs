@@ -24,6 +24,7 @@ namespace DataAccess.EntityConfiguration
 
             //İlişki
             builder.HasOne(i => i.AnnouncementType);
+            builder.HasMany(i => i.AnnouncementUsers);
 
             builder.HasQueryFilter(i => !i.DeletedDate.HasValue);
         }
