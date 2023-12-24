@@ -42,7 +42,7 @@ namespace Business.Concretes
 
         public async Task<GetByIdStudentResponse> GetByIdAsync(Guid id)
         {
-            Student result = await _studentDal.GetAsync(s => s.Id == id);
+            Student result = await _studentDal.GetAsync(predicate: s => s.Id == id);
             GetByIdStudentResponse data = _mapper.Map<GetByIdStudentResponse>(result);
             return data;
         }
@@ -60,7 +60,7 @@ namespace Business.Concretes
 
         public async Task<UpdatedStudentResponse> UpdateAsync(UpdateStudentRequest updateStudentRequest)
         {
-            Student updateStudent = await _studentDal.GetAsync(s => s.Id == updateStudentRequest.Id);
+            Student updateStudent = await _studentDal.GetAsync(predicate: s => s.Id == updateStudentRequest.Id);
 
             _mapper.Map(updateStudentRequest, updateStudent);
 
