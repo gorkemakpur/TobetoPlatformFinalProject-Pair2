@@ -1,21 +1,29 @@
-﻿using AutoMapper;
+using AutoMapper;
+using Business.Dtos.Announcement.Request;
+using Business.Dtos.Announcement.Response;
 using Business.Dtos.Instructor.Request;
 using Business.Dtos.Instructor.Response;
+using Core.DataAccess.Paging;
 using Entities.Concretes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Business.Profiles
+namespace Business.Profiles;
+
+public class InstructorMappingProfile : Profile
 {
-    public class InstructorMappingProfile : Profile
+    public InstructorMappingProfile()
     {
-        public InstructorMappingProfile() 
-        {
-            CreateMap<Instructor, CreateInstructorRequest>().ReverseMap();
-            CreateMap<Instructor, CreatedInstructorResponse>().ReverseMap();
-        }
+        //create
+        CreateMap<Instructor, CreateInstructorRequest>().ReverseMap();
+        CreateMap<Instructor, CreatedInstructorResponse>().ReverseMap();
+        CreateMap<CreatedInstructorResponse, CreateInstructorRequest>().ReverseMap();
+        //list
+        CreateMap<Instructor, GetListInstructorResponse>().ReverseMap();
+        CreateMap<Instructor, GetByIdInstructorResponse>().ReverseMap();
+        CreateMap<IPaginate<Instructor>, Paginate<GetListInstructorResponse>>();
+        //delete
+        CreateMap<DeleteInstructorRequest, DeletedInstructorResponse>().ReverseMap();
+        //update
+        CreateMap<Instructor, UpdateInstructorRequest>().ReverseMap();
+        CreateMap<UpdateInstructorRequest, UpdatedInstructorResponse>().ReverseMap();
     }
 }
