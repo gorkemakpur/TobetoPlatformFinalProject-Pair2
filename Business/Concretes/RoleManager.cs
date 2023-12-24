@@ -41,7 +41,7 @@ public class RoleManager : IRoleService
 
     public async Task<GetByIdRoleResponse> GetByIdAsync(Guid id)
     {
-        Role result = await _roleDal.GetAsync(r => r.Id == id);
+        Role result = await _roleDal.GetAsync(predicate: r => r.Id == id);
         GetByIdRoleResponse data = _mapper.Map<GetByIdRoleResponse>(result);
         return data;
     }
@@ -59,7 +59,7 @@ public class RoleManager : IRoleService
 
     public async Task<UpdatedRoleResponse> UpdateAsync(UpdateRoleRequest updateRoleRequest)
     {
-        Role updateRole = await _roleDal.GetAsync(r => r.Id == updateRoleRequest.Id);
+        Role updateRole = await _roleDal.GetAsync(predicate: r => r.Id == updateRoleRequest.Id);
 
         _mapper.Map(updateRoleRequest, updateRole);
 
