@@ -42,7 +42,7 @@ public class SituationManager : ISituationService
 
     public async Task<GetByIdSituationResponse> GetByIdAsync(Guid id)
     {
-        Situation result = await _situationDal.GetAsync(s => s.Id == id);
+        Situation result = await _situationDal.GetAsync(predicate: s => s.Id == id);
         GetByIdSituationResponse data = _mapper.Map<GetByIdSituationResponse>(result);
         return data;
     }
@@ -60,7 +60,7 @@ public class SituationManager : ISituationService
 
     public async Task<UpdatedSituationResponse> UpdateAsync(UpdateSituationRequest updateSituationRequest)
     {
-        Situation updateSituation = await _situationDal.GetAsync(s => s.Id == updateSituationRequest.Id);
+        Situation updateSituation = await _situationDal.GetAsync(predicate: s => s.Id == updateSituationRequest.Id);
 
         _mapper.Map(updateSituationRequest, updateSituation);
 
