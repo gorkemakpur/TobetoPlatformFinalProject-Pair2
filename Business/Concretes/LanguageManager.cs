@@ -41,7 +41,7 @@ public class LanguageManager : ILanguageService
 
     public async Task<GetByIdLanguageResponse> GetByIdAsync(Guid id)
     {
-        Language result = await _languageDal.GetAsync(l => l.Id == id);
+        Language result = await _languageDal.GetAsync(predicate: l => l.Id == id);
         GetByIdLanguageResponse data = _mapper.Map<GetByIdLanguageResponse>(result);
         return data;
     }
@@ -59,7 +59,7 @@ public class LanguageManager : ILanguageService
 
     public async Task<UpdatedLanguageResponse> UpdateAsync(UpdateLanguageRequest updateLanguageRequest)
     {
-        Language updateLanguage = await _languageDal.GetAsync(l => l.Id == updateLanguageRequest.Id);
+        Language updateLanguage = await _languageDal.GetAsync(predicate: l => l.Id == updateLanguageRequest.Id);
 
         _mapper.Map(updateLanguageRequest, updateLanguage);
 

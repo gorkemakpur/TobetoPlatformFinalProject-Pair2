@@ -21,7 +21,7 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<IActionResult> Update([FromBody] UpdateLanguageRequest updateLanguageRequest)
         {
             var result = await _languageService.UpdateAsync(updateLanguageRequest);

@@ -13,7 +13,7 @@ public class LanguageConfiguration : IEntityTypeConfiguration<Language>
         builder.Property(l => l.StudentId).HasColumnName("StudentId").IsRequired();
         builder.Property(l => l.LanguageTypeId).HasColumnName("LanguageTypeId").IsRequired();
         builder.Property(l => l.LanguageLevelId).HasColumnName("LanguageLevelId").IsRequired();
-
+        //bu kısma bakılacak!
         builder.HasOne(l => l.Student)
            .WithMany(s => s.Languages)
            .HasForeignKey(l => l.StudentId);
