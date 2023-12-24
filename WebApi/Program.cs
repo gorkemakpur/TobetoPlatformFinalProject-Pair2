@@ -1,8 +1,5 @@
-
 using Business;
-using Business.Profiles;
 using DataAccess;
-using AutoMapper;
 
 namespace WebApi
 {
@@ -20,8 +17,8 @@ namespace WebApi
             builder.Services.AddBusinessServices();
             builder.Services.AddDataAccessServices(builder.Configuration);
 
-            builder.Services.AddAutoMapper(typeof(InstructorMappingProfile));
-
+            builder.Services.AddAutoMapper(typeof(BusinessServiceRegistration));
+            
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

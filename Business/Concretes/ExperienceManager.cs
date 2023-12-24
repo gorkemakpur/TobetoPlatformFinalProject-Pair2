@@ -1,6 +1,10 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
+using Business.Dtos.Experience.Request;
+using Business.Dtos.Experience.Response;
+using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
+using Entities.Concretes;
 
 namespace Business.Concretes
 {
@@ -15,7 +19,39 @@ namespace Business.Concretes
             _mapper = mapper;
         }
 
-        // İlgili metotlar
+        public async Task<CreatedExperienceResponse> AddAsync(CreateExperienceRequest createExperienceRequest)
+        {
+            var experience = _mapper.Map<Experience>(createExperienceRequest);
+            var result = await _experienceDal.AddAsync(experience);
+            return _mapper.Map<CreatedExperienceResponse>(result);
+        }
+
+        public async Task<DeletedExperienceResponse> DeleteAsync(DeleteExperienceRequest deleteExperienceRequest)
+        {
+            var experience = await _experienceDal.GetAsync(x => x.Id == deleteExperienceRequest.Id);
+            var result = await _experienceDal.DeleteAsync(experience);
+            return _mapper.Map<DeletedExperienceResponse>(result);
+        }
+
+        public async Task<UpdatedExperienceResponse> UpdateAsync(UpdateExperienceRequest updateExperienceRequest)
+        {
+            var experience = await _experienceDal.GetAsync(x => x.Id == updateExperienceRequest.Id);
+            _mapper.Map(updateExperienceRequest, experience);
+            var result = await _experienceDal.UpdateAsync(experience);
+            return _mapper.Map<UpdatedExperienceResponse>(result);
+        }
+
+        public async Task<IPaginate<GetListExperienceResponse>> GetListAsync()
+        {
+            var experiences = await _experienceDal.GetListAsync();
+            return _mapper.Map<Paginate<GetListExperienceResponse>>(experiences);
+        }
+        
+        public async Task<GetByIdExperienceResponse> GetByIdAsync(Guid id)
+        {
+            var experience = await _experienceDal.GetAsync(x=>x.Id == id);
+            return _mapper.Map<GetByIdExperienceResponse>(experience);
+        }
     }
 
 }
