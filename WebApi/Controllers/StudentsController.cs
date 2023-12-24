@@ -21,7 +21,7 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<IActionResult> Update([FromBody] UpdateStudentRequest updateStudentRequest)
         {
             var result = await _studentService.UpdateAsync(updateStudentRequest);
