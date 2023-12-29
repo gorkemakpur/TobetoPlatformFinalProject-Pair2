@@ -41,11 +41,8 @@ namespace Business.Concretes
         public async Task<DeletedAnnouncementResponse> DeleteAsync(DeleteAnnouncementRequest deleteAnnouncementRequest)
         {
             Announcement removeAnnouncement = await _announcementDal.GetAsync(predicate: a => a.Id == deleteAnnouncementRequest.Id);
-
             await _announcementDal.DeleteAsync(removeAnnouncement);
-
             DeletedAnnouncementResponse deletedAnnouncementResponse = _mapper.Map<DeletedAnnouncementResponse>(deleteAnnouncementRequest);
-
             return deletedAnnouncementResponse;
         }
 

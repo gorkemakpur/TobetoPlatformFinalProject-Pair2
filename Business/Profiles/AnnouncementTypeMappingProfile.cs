@@ -31,9 +31,6 @@ namespace Business.Profiles
             //delete
             CreateMap<DeleteAnnouncementTypeRequest, DeletedAnnouncementTypeResponse>().ReverseMap();
 
-
-
-
         }
 
     }

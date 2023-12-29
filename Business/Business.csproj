@@ -20,8 +20,6 @@
     <Folder Include="Dtos\AnnouncementUser\Response\" />
     <Folder Include="Dtos\District\Request\" />
     <Folder Include="Dtos\District\Response\" />
-    <Folder Include="Dtos\Role\Request\" />
-    <Folder Include="Dtos\Role\Response\" />
     <Folder Include="Dtos\City\Request\" />
     <Folder Include="Dtos\City\Response\" />
     <Folder Include="Dtos\SyncCourse\Request\" />
@@ -34,10 +32,6 @@
     <Folder Include="Dtos\SyncCourseInstructor\Response\" />
     <Folder Include="Dtos\Survey\Request\" />
     <Folder Include="Dtos\Survey\Response\" />
-    <Folder Include="Dtos\AsyncCourse\Request\" />
-    <Folder Include="Dtos\AsyncCourse\Response\" />
-    <Folder Include="Dtos\AsyncCourseContent\Request\" />
-    <Folder Include="Dtos\AsyncCourseContent\Response\" />
     <Folder Include="Dtos\AsyncCourseDepartment\Request\" />
     <Folder Include="Dtos\AsyncCourseDepartment\Response\" />
     <Folder Include="Dtos\Category\Request\" />
@@ -52,20 +46,12 @@
     <Folder Include="Dtos\Education\Response\" />
     <Folder Include="Dtos\Experience\Request\" />
     <Folder Include="Dtos\Experience\Response\" />
-    <Folder Include="Dtos\Language\Request\" />
-    <Folder Include="Dtos\Language\Response\" />
     <Folder Include="Dtos\LanguageLevel\Request\" />
     <Folder Include="Dtos\LanguageLevel\Response\" />
-    <Folder Include="Dtos\LanguageType\Request\" />
-    <Folder Include="Dtos\LanguageType\Response\" />
-    <Folder Include="Dtos\Situation\Request\" />
-    <Folder Include="Dtos\Situation\Response\" />
     <Folder Include="Dtos\SocialMedia\Request\" />
     <Folder Include="Dtos\SocialMedia\Response\" />
     <Folder Include="Dtos\SocialMediaName\Request\" />
     <Folder Include="Dtos\SocialMediaName\Response\" />
-    <Folder Include="Dtos\Student\Request\" />
-    <Folder Include="Dtos\Student\Response\" />
   </ItemGroup>
 
 </Project>
