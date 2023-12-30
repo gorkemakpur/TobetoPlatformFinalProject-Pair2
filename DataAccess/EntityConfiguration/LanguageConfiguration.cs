@@ -14,15 +14,9 @@ public class LanguageConfiguration : IEntityTypeConfiguration<Language>
         builder.Property(l => l.LanguageTypeId).HasColumnName("LanguageTypeId").IsRequired();
         builder.Property(l => l.LanguageLevelId).HasColumnName("LanguageLevelId").IsRequired();
         //bu kısma bakılacak!
-        builder.HasOne(l => l.Student)
-           .WithMany(s => s.Languages)
-           .HasForeignKey(l => l.StudentId);
-        builder.HasOne(l => l.LanguageType)
-           .WithMany(lt => lt.Languages)
-           .HasForeignKey(l => l.LanguageTypeId);
-        builder.HasOne(l => l.LanguageLevel)
-           .WithMany(ll => ll.Languages)
-           .HasForeignKey(l => l.LanguageLevelId);
+        builder.HasOne(l => l.Student);
+        builder.HasOne(l => l.LanguageType);
+        builder.HasOne(l => l.LanguageLevel);
 
         builder.HasQueryFilter(l => !l.DeletedDate.HasValue);
     }

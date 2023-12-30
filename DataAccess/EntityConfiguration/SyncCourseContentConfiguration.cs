@@ -22,17 +22,10 @@ namespace DataAccess.EntityConfiguration
             builder.Property(scc => scc.EndedDate).HasColumnName("EndedDate").IsRequired();
 
             // İlişki
-            builder.HasOne(scc => scc.SyncCourse)
-                .WithMany(sc => sc.SyncCourseContents)
-                .HasForeignKey(scc => scc.SyncCourseId);
-
-            builder.HasMany(scc => scc.SyncCourseInstructors)
-               .WithOne(scc => scc.SyncCourseContent)
-               .HasForeignKey(scc => scc.SyncCourseContent);
+            builder.HasOne(scc => scc.SyncCourse);
+            builder.HasMany(scc => scc.SyncCourseInstructors);
 
 
-            // Uniq Key
-            //builder.HasIndex(scc => scc.Url).IsUnique();
 
             builder.HasQueryFilter(scc => !scc.DeletedDate.HasValue);
         }

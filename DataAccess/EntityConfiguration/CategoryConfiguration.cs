@@ -17,15 +17,8 @@ namespace DataAccess.EntityConfiguration
             builder.Property(c => c.Name).HasColumnName("Name").IsRequired();
 
             // İlişkiler
-            builder.HasMany(c => c.SyncCourses)
-                .WithOne(sc => sc.Category)
-                .HasForeignKey(sc => sc.CategoryId);
-
-
-
-            builder.HasMany(c => c.AsyncCourses)
-                .WithOne(ac => ac.Category)
-                .HasForeignKey(ac => ac.CategoryId);
+            builder.HasMany(c => c.SyncCourses);
+            builder.HasMany(c => c.AsyncCourses);
                 
 
             // Uniq Key

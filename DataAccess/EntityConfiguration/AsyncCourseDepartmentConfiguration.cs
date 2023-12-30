@@ -20,17 +20,12 @@ namespace DataAccess.EntityConfiguration
             builder.Property(acd => acd.EndedDate).HasColumnName("EndedDate").IsRequired();
 
             // Uniq Key(bakılacak)
-           // builder.HasIndex(indexExpression: acd => new { acd.DepartmentId, acd.AsyncCourseId }, name: "UK_AsyncCourseDepartments_DepartmentId_AsyncCourseId").IsUnique();
+            // builder.HasIndex(indexExpression: acd => new { acd.DepartmentId, acd.AsyncCourseId }, name: "UK_AsyncCourseDepartments_DepartmentId_AsyncCourseId").IsUnique();
 
             // İlişki
-            builder.HasOne(acd => acd.AsyncCourse)
-                .WithMany(ac => ac.AsyncCourseDepartments)
-                .HasForeignKey(acd => acd.AsyncCourseId);
+            builder.HasOne(acd => acd.AsyncCourse);
+            builder.HasOne(acd => acd.Department);
 
-
-            builder.HasOne(acd => acd.Department)
-                .WithMany(d => d.AsyncCourseDepartments)
-                .HasForeignKey(acd => acd.DepartmentId);
                 
 
             builder.HasQueryFilter(acd => !acd.DeletedDate.HasValue);
