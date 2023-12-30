@@ -16,20 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\AnnouncementUser\Request\" />
-    <Folder Include="Dtos\AnnouncementUser\Response\" />
-    <Folder Include="Dtos\District\Request\" />
-    <Folder Include="Dtos\District\Response\" />
     <Folder Include="Dtos\City\Request\" />
     <Folder Include="Dtos\City\Response\" />
     <Folder Include="Dtos\SyncCourse\Request\" />
     <Folder Include="Dtos\SyncCourse\Response\" />
     <Folder Include="Dtos\SyncCourseContent\Request\" />
     <Folder Include="Dtos\SyncCourseContent\Response\" />
-    <Folder Include="Dtos\SyncCourseDepartment\Request\" />
-    <Folder Include="Dtos\SyncCourseDepartment\Response\" />
-    <Folder Include="Dtos\SyncCourseInstructor\Request\" />
-    <Folder Include="Dtos\SyncCourseInstructor\Response\" />
     <Folder Include="Dtos\Survey\Request\" />
     <Folder Include="Dtos\Survey\Response\" />
     <Folder Include="Dtos\AsyncCourseDepartment\Request\" />
@@ -38,16 +30,6 @@
     <Folder Include="Dtos\Category\Response\" />
     <Folder Include="Dtos\Certificate\Request\" />
     <Folder Include="Dtos\Certificate\Response\" />
-    <Folder Include="Dtos\Competence\Request\" />
-    <Folder Include="Dtos\Competence\Response\" />
-    <Folder Include="Dtos\Department\Request\" />
-    <Folder Include="Dtos\Department\Response\" />
-    <Folder Include="Dtos\Education\Request\" />
-    <Folder Include="Dtos\Education\Response\" />
-    <Folder Include="Dtos\Experience\Request\" />
-    <Folder Include="Dtos\Experience\Response\" />
-    <Folder Include="Dtos\LanguageLevel\Request\" />
-    <Folder Include="Dtos\LanguageLevel\Response\" />
     <Folder Include="Dtos\SocialMedia\Request\" />
     <Folder Include="Dtos\SocialMedia\Response\" />
     <Folder Include="Dtos\SocialMediaName\Request\" />

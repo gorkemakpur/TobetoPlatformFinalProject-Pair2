@@ -16,7 +16,5 @@ namespace Entities.Concretes
 
         public Department? Department { get; set; }
         public SyncCourse? SyncCourse { get; set; }
-
-
     }
 }
