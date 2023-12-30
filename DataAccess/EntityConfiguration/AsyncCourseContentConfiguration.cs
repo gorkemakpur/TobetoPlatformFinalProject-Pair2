@@ -14,7 +14,7 @@ namespace DataAccess.EntityConfiguration
         public void Configure(EntityTypeBuilder<AsyncCourseContent> builder)
         {
             //Tablo
-            builder.ToTable("AsyncCourses").HasKey(i => i.Id);
+            builder.ToTable("AsyncCourseContents").HasKey(i => i.Id);
             //Sütunlar
             builder.Property(i => i.Id).HasColumnName("Id").IsRequired();
             builder.Property(i => i.AsyncCourseId).HasColumnName("AsyncCourseId").IsRequired();
