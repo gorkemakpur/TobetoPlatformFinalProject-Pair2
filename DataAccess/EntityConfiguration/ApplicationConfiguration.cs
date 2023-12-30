@@ -22,8 +22,6 @@ namespace DataAccess.EntityConfiguration
             builder.Property(i => i.IsDocumentAccepted).HasColumnName("IsDocumentAccepted").IsRequired();
             builder.Property(i => i.IsFormAccepted).HasColumnName("IsFormAccepted").IsRequired();
 
-            //Uniq Key
-            //builder.HasIndex(indexExpression: i => i.Type, name: "UK_AnnouncementTypes_Type").IsUnique();
 
             //İlişki
             builder.HasOne(i => i.Student);

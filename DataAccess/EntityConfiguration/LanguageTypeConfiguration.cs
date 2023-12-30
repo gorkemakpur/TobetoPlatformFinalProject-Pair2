@@ -11,10 +11,11 @@ namespace DataAccess.EntityConfiguration
             builder.ToTable("LanguageTypes").HasKey(lt => lt.Id);
 
             builder.Property(lt => lt.Id).HasColumnName("Id").IsRequired();
-
             builder.Property(lt => lt.Name).HasColumnName("Name").IsRequired();
 
+
             builder.HasMany(lt => lt.Languages);
+
 
             builder.HasQueryFilter(lt => !lt.DeletedDate.HasValue);
         }

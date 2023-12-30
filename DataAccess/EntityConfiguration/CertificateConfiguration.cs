@@ -19,13 +19,9 @@ namespace DataAccess.EntityConfiguration
             builder.Property(cert => cert.Name).HasColumnName("Name").IsRequired();
 
             // İlişki
-            builder.HasOne(cert => cert.Student)
-                .WithMany(s => s.Certificates)
-                .HasForeignKey(cert => cert.StudentId);
+            builder.HasOne(cert => cert.Student);
                 
 
-            // Uniq Key
-            //builder.HasIndex(cert => cert.Url).IsUnique();
 
             builder.HasQueryFilter(cert => !cert.DeletedDate.HasValue);
         }

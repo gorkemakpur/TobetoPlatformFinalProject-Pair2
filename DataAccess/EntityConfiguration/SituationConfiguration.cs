@@ -11,7 +11,6 @@ public class SituationConfiguration : IEntityTypeConfiguration<Situation>
         builder.ToTable("Situations").HasKey(s => s.Id);
 
         builder.Property(s => s.Id).HasColumnName("Id").IsRequired();
-
         builder.Property(s => s.Name).HasColumnName("Name").IsRequired();
 
         builder.HasMany(s => s.Educations);

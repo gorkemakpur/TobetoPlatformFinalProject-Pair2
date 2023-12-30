@@ -22,6 +22,7 @@ namespace DataAccess.EntityConfiguration
 
             //İlişki
             builder.HasOne(i => i.Category);
+
             builder.HasMany(i => i.AsyncCourseContents);
             builder.HasMany(i => i.AsyncCourseDepartments);
 

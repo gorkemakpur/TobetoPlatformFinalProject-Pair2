@@ -11,7 +11,6 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
         builder.ToTable("Roles").HasKey(r => r.Id);
 
         builder.Property(r => r.Id).HasColumnName("Id").IsRequired();
-
         builder.Property(r => r.Type).HasColumnName("Type").IsRequired();
 
         builder.HasMany(r => r.Users);

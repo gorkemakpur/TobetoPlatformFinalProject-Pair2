@@ -17,9 +17,7 @@ namespace DataAccess.EntityConfiguration
             builder.Property(city => city.Name).HasColumnName("Name").IsRequired();
 
             // İlişki
-            builder.HasMany(city => city.Districts)
-                .WithOne(district => district.City)
-                .HasForeignKey(district => district.CityId);
+            builder.HasMany(city => city.Districts);
                 
 
             // Uniq Key
