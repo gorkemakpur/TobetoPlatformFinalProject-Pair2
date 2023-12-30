@@ -17,7 +17,7 @@ namespace DataAccess
         public static IServiceCollection AddDataAccessServices(this IServiceCollection services, IConfiguration configuration)
         {
 
-            services.AddDbContext<TobetoPlatformFinalProjectContext>(options => options.UseSqlServer(configuration.GetConnectionString("GaniDb")));
+            services.AddDbContext<TobetoPlatformFinalProjectContext>(options => options.UseSqlServer(configuration.GetConnectionString("TobetoPlatformFinalProject")));
 
             services.AddScoped<IAnnouncementUserDal, EfAnnouncementUserDal>();
             services.AddScoped<ICityDal, EfCityDal>();
