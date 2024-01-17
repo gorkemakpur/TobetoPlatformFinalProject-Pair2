@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -34,6 +34,8 @@
     <Folder Include="Dtos\SocialMedia\Response\" />
     <Folder Include="Dtos\SocialMediaName\Request\" />
     <Folder Include="Dtos\SocialMediaName\Response\" />
+    <Folder Include="Rules\" />
+    <Folder Include="ValidationRules\FluentValidation\" />
   </ItemGroup>
 
 </Project>
