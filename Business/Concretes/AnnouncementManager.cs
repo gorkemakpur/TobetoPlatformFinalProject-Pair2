@@ -3,6 +3,7 @@ using Business.Abstracts;
 using Business.Dtos.Announcement.Request;
 using Business.Dtos.Announcement.Response;
 using Business.Dtos.AnnouncementType.Response;
+using Business.Rules;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
@@ -22,16 +23,21 @@ namespace Business.Concretes
     {
         private readonly IAnnouncementDal _announcementDal;
         private readonly IMapper _mapper;
+        private AnnouncementBusinessRules _announcementBusinessRules;
 
-        public AnnouncementManager(IAnnouncementDal announcementDal, IMapper mapper)
+        public AnnouncementManager(IAnnouncementDal announcementDal, IMapper mapper, AnnouncementBusinessRules announcementBusinessRules)
         {
             _announcementDal = announcementDal;
             _mapper = mapper;
+            _announcementBusinessRules = announcementBusinessRules;
         }
 
         [ValidationAspect(typeof(CreateAnnouncementValidator))]
         public async Task<CreatedAnnouncementResponse> AddAsync(CreateAnnouncementRequest createAnnouncementRequest)
         {
+            //rules örnek
+            await _announcementBusinessRules.CheckAnnouncementLimit(createAnnouncementRequest.AnnouncementTypeId);
+
             Announcement addAnnouncement = _mapper.Map<Announcement>(createAnnouncementRequest);
             Announcement createdAnnouncementResponse = await _announcementDal.AddAsync(addAnnouncement);
             CreatedAnnouncementResponse createdAnnouncement = _mapper.Map<CreatedAnnouncementResponse>(createdAnnouncementResponse);
