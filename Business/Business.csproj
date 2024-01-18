@@ -38,7 +38,6 @@
     <Folder Include="Dtos\SocialMedia\Response\" />
     <Folder Include="Dtos\SocialMediaName\Request\" />
     <Folder Include="Dtos\SocialMediaName\Response\" />
-    <Folder Include="Rules\" />
   </ItemGroup>
 
 </Project>
