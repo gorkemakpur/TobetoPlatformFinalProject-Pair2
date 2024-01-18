@@ -1,4 +1,5 @@
 using Business;
+using Business.DependencyResolvers.Autofac;
 using DataAccess;
 
 namespace WebApi
@@ -13,10 +14,11 @@ namespace WebApi
 
             builder.Services.AddControllers();
 
+            
 
             builder.Services.AddBusinessServices();
             builder.Services.AddDataAccessServices(builder.Configuration);
-
+            
             builder.Services.AddAutoMapper(typeof(BusinessServiceRegistration));
             
 
