@@ -29,7 +29,7 @@ namespace Business.Concretes
             _mapper = mapper;
         }
 
-        [ValidationAspect(typeof(AnnouncementValidator))]//bu çalışmıyor
+        [ValidationAspect(typeof(CreateAnnouncementValidator))]
         public async Task<CreatedAnnouncementResponse> AddAsync(CreateAnnouncementRequest createAnnouncementRequest)
         {
             Announcement addAnnouncement = _mapper.Map<Announcement>(createAnnouncementRequest);
