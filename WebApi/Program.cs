@@ -1,6 +1,9 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Business;
 using Business.DependencyResolvers.Autofac;
 using DataAccess;
+
 
 namespace WebApi
 {
@@ -11,10 +14,11 @@ namespace WebApi
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+            builder.Host.ConfigureContainer<ContainerBuilder>(myBuilder => myBuilder.RegisterModule(new AutofacBusinessModule()));
+
 
             builder.Services.AddControllers();
-
-            
 
             builder.Services.AddBusinessServices();
             builder.Services.AddDataAccessServices(builder.Configuration);

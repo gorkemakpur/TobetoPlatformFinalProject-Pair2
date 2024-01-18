@@ -1,4 +1,5 @@
-﻿using Business.Abstracts;
+﻿using Autofac;
+using Business.Abstracts;
 using Business.Concretes;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
@@ -7,6 +8,7 @@ using System.Reflection;
 
 namespace Business
 {
+
     public static class BusinessServiceRegistration
     {
         public static IServiceCollection AddBusinessServices(this IServiceCollection services)
@@ -43,7 +45,7 @@ namespace Business
             services.AddScoped<ISyncCourseDepartmentService, SyncCourseDepartmentManager>();
             services.AddScoped<ISyncCourseInstructorService, SyncCourseInstructorManager>();
             #endregion
-
+            
             //services.AddSubClassesOfType(Assembly.GetExecutingAssembly(), typeof(BaseBusinessRules));
             //services.AddScoped<ProductBusinessRules>(); üstteki kod bu işleri hallediyor
             //services.AddScoped<CategoryBusinessRules>();
