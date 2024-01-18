@@ -3,6 +3,9 @@ using Business.Abstracts;
 using Business.Dtos.Announcement.Request;
 using Business.Dtos.Announcement.Response;
 using Business.Dtos.AnnouncementType.Response;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.DataAccess.Paging;
 using Core.DataAccess.Repositories;
 using DataAccess.Abstracts;
@@ -10,6 +13,7 @@ using DataAccess.Concretes.EntityFramework;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Business.Concretes
@@ -25,15 +29,11 @@ namespace Business.Concretes
             _mapper = mapper;
         }
 
+        [ValidationAspect(typeof(AnnouncementValidator))]//bu çalışmıyor
         public async Task<CreatedAnnouncementResponse> AddAsync(CreateAnnouncementRequest createAnnouncementRequest)
         {
-            //announcement türünde bir nesne oluştur mapper içerisinde createannouncementrequesti Announcement'e maple değeri değişkene ata 
             Announcement addAnnouncement = _mapper.Map<Announcement>(createAnnouncementRequest);
-
-            //bir response değişkeni oluştur            yukarıda aldığımız veriyi ekle ve değişkene dönen değeri al 
             Announcement createdAnnouncementResponse = await _announcementDal.AddAsync(addAnnouncement);
-           
-            //son olarak request ile response'u maple
             CreatedAnnouncementResponse createdAnnouncement = _mapper.Map<CreatedAnnouncementResponse>(createdAnnouncementResponse);
             return createdAnnouncement;
         }
@@ -76,11 +76,8 @@ namespace Business.Concretes
         {
             //bu kısıma bakılacak eksiklik var bütün değerleri girmeden istediğimiz değer ile update etme kısmına bakılacak
             Announcement updateAnnouncement = await _announcementDal.GetAsync(p => p.Id == updateAnnouncementRequest.Id);
-
             _mapper.Map(updateAnnouncementRequest, updateAnnouncement);
-
             Announcement updatedAnnouncement = await _announcementDal.UpdateAsync(updateAnnouncement);
-
             UpdatedAnnouncementResponse updatedAnnouncementResponse = _mapper.Map<UpdatedAnnouncementResponse>(updatedAnnouncement);
 
             return updatedAnnouncementResponse;

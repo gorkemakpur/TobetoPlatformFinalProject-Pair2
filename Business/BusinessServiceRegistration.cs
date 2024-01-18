@@ -1,5 +1,7 @@
 ﻿using Business.Abstracts;
 using Business.Concretes;
+using Castle.DynamicProxy;
+using Core.Utilities.Interceptors;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -9,6 +11,7 @@ namespace Business
     {
         public static IServiceCollection AddBusinessServices(this IServiceCollection services)
         {
+            #region scopelar
             services.AddScoped<IAnnouncementUserService, AnnouncementUserManager>();
             services.AddScoped<ICityService, CityManager>();
             services.AddScoped<IDistrictService, DistrictManager>();
@@ -39,10 +42,7 @@ namespace Business
             services.AddScoped<ISyncCourseContentService, SyncCourseContentManager>();
             services.AddScoped<ISyncCourseDepartmentService, SyncCourseDepartmentManager>();
             services.AddScoped<ISyncCourseInstructorService, SyncCourseInstructorManager>();
-
-
-            //services.AddScoped<ICategoryService, CategoryManager>();
-            //services.AddScoped<ICategoryService, CategoryManager>();
+            #endregion
 
             //services.AddSubClassesOfType(Assembly.GetExecutingAssembly(), typeof(BaseBusinessRules));
             //services.AddScoped<ProductBusinessRules>(); üstteki kod bu işleri hallediyor
@@ -52,11 +52,12 @@ namespace Business
 
             return services;
         }
+
         public static IServiceCollection AddSubClassesOfType(
-    this IServiceCollection services,
-    Assembly assembly,
-    Type type,
-    Func<IServiceCollection, Type, IServiceCollection>? addWithLifeCycle = null)
+                    this IServiceCollection services,
+                    Assembly assembly,
+                    Type type,
+                    Func<IServiceCollection, Type, IServiceCollection>? addWithLifeCycle = null)
         {
             var types = assembly.GetTypes().Where(t => t.IsSubclassOf(type) && type != t).ToList();
             foreach (var item in types)
