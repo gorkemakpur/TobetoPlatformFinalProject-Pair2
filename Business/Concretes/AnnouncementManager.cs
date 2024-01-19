@@ -36,8 +36,8 @@ namespace Business.Concretes
         public async Task<CreatedAnnouncementResponse> AddAsync(CreateAnnouncementRequest createAnnouncementRequest)
         {
             //rules örnek
-            await _announcementBusinessRules.CheckAnnouncementLimit(createAnnouncementRequest.AnnouncementTypeId);
-
+            await _announcementBusinessRules.CheckAnnouncementLimit();
+            
             Announcement addAnnouncement = _mapper.Map<Announcement>(createAnnouncementRequest);
             Announcement createdAnnouncementResponse = await _announcementDal.AddAsync(addAnnouncement);
             CreatedAnnouncementResponse createdAnnouncement = _mapper.Map<CreatedAnnouncementResponse>(createdAnnouncementResponse);

@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Business.Abstracts;
 using Business.Concretes;
+using Business.Rules;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,7 +14,7 @@ namespace Business
     {
         public static IServiceCollection AddBusinessServices(this IServiceCollection services)
         {
-            #region scopelar
+            #region scope'lar
             services.AddScoped<IAnnouncementUserService, AnnouncementUserManager>();
             services.AddScoped<ICityService, CityManager>();
             services.AddScoped<IDistrictService, DistrictManager>();
@@ -45,13 +46,20 @@ namespace Business
             services.AddScoped<ISyncCourseDepartmentService, SyncCourseDepartmentManager>();
             services.AddScoped<ISyncCourseInstructorService, SyncCourseInstructorManager>();
             #endregion
-            
-            //services.AddSubClassesOfType(Assembly.GetExecutingAssembly(), typeof(BaseBusinessRules));
+
+            #region notlar
+            /*services.AddSubClassesOfType(Assembly.GetExecutingAssembly(), typeof(BaseBusinessRules));
             //services.AddScoped<ProductBusinessRules>(); üstteki kod bu işleri hallediyor
             //services.AddScoped<CategoryBusinessRules>();
 
-            //services.AddAutoMapper(Assembly.GetExecutingAssembly()); bunu burada yada program.cs içindeki haliyle yazabiliriz
+            //services.AddAutoMapper(Assembly.GetExecutingAssembly()); bunu burada yada program.cs içindeki haliyle yazabiliriz*/
+            #endregion
 
+
+            #region rules'lar
+            services.AddScoped<AnnouncementBusinessRules>();//biri bu classı isterse referansını newle ve ver
+
+            #endregion
             return services;
         }
 

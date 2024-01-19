@@ -2,6 +2,7 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Business;
 using Business.DependencyResolvers.Autofac;
+using Core.CrossCuttingConcerns.Exceptions.Extensions;
 using DataAccess;
 
 
@@ -45,7 +46,7 @@ namespace WebApi
 
 
             app.MapControllers();
-            //app.ConfigureCustomExceptionMiddleware();
+            app.ConfigureCustomExceptionMiddleware();
 
             app.Run();
         }
