@@ -31,7 +31,8 @@ namespace Business.Concretes
             _mapper = mapper;
             _announcementBusinessRules = announcementBusinessRules;
         }
-
+        //claim -> iddia etmek, kullanıcının belirtilen şeylerden birine sahip olması gerekiyor
+        //[SecuredOperation("admin,editor")]
         [ValidationAspect(typeof(CreateAnnouncementValidator))]
         public async Task<CreatedAnnouncementResponse> AddAsync(CreateAnnouncementRequest createAnnouncementRequest)
         {
