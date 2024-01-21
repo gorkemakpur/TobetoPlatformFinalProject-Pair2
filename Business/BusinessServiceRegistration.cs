@@ -4,6 +4,7 @@ using Business.Concretes;
 using Business.Rules;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
+using Core.Utilities.Security.JWT;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -18,8 +19,6 @@ namespace Business
             services.AddScoped<IAnnouncementUserService, AnnouncementUserManager>();
             services.AddScoped<ICityService, CityManager>();
             services.AddScoped<IDistrictService, DistrictManager>();
-            services.AddScoped<IUserService, UserManager>();
-            services.AddScoped<IRoleService, RoleManager>();
             services.AddScoped<IInstructorService, InstructorManager>();
             services.AddScoped<IAnnouncementService, AnnouncementManager>();
             services.AddScoped<IAnnouncementTypeService, AnnouncementTypeManager>();
@@ -45,6 +44,10 @@ namespace Business
             services.AddScoped<ISyncCourseContentService, SyncCourseContentManager>();
             services.AddScoped<ISyncCourseDepartmentService, SyncCourseDepartmentManager>();
             services.AddScoped<ISyncCourseInstructorService, SyncCourseInstructorManager>();
+            //14
+            services.AddScoped<IAuthService, AuthManager>();
+            services.AddScoped<IUserService, UserManager>();
+            services.AddScoped<ITokenHelper, JwtHelper>();
             #endregion
 
             #region notlar

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Business.Messagess
 {
-    public class BusinessMessages
+    public static class BusinessMessages
     {
+        public static string? LoginError = "Giriş hatası";
     }
 }

@@ -42,7 +42,8 @@ namespace Core.DataAccess.Repositories
         );
 
         bool Any(Expression<Func<TEntity, bool>>? predicate = null, bool withDeleted = false, bool enableTracking = true);
-        TEntity Add(TEntity entity);
+        //değiştirildi TEntity idi
+        void Add(TEntity entity);
         ICollection<TEntity> AddRange(ICollection<TEntity> entities);
         TEntity Update(TEntity entity);
         ICollection<TEntity> UpdateRange(ICollection<TEntity> entities);

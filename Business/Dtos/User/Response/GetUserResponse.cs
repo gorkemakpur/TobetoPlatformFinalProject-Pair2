@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Entities.Concrete
+namespace Business.Dtos.User.Response
 {
-    public class Userss //:IEntity
+    public class GetUserResponse
     {
-        //normalde buradaki entity'i kullanırdık fakat proje ilerlediği için bozmak istemedim o yüzden ismini değiştiriyorum
-        //proje erken biterse bu kısmı uyarlayabiliriz
         public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

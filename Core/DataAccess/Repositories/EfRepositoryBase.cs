@@ -236,7 +236,8 @@ namespace Core.DataAccess.Repositories
 
         public TEntity? Get(Expression<Func<TEntity, bool>> predicate, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, bool withDeleted = false, bool enableTracking = true)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+                return Context.Set<TEntity>().SingleOrDefault(predicate);
         }
 
         public IPaginate<TEntity> GetList(Expression<Func<TEntity, bool>>? predicate = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, int index = 0, int size = 10, bool withDeleted = false, bool enableTracking = true)
@@ -253,10 +254,15 @@ namespace Core.DataAccess.Repositories
         {
             throw new NotImplementedException();
         }
-
-        public TEntity Add(TEntity entity)
+        //değiştirildi
+        public void Add(TEntity entity)
         {
-            throw new NotImplementedException();
+            using (var context = Context)
+            {
+                var addedEntity = context.Entry(entity);
+                addedEntity.State = EntityState.Added;
+                context.SaveChanges();
+            }
         }
 
         public ICollection<TEntity> AddRange(ICollection<TEntity> entities)

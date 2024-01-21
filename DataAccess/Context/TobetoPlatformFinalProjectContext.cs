@@ -1,4 +1,5 @@
-﻿using Entities.Concretes;
+﻿using Core.Entities.Concrete;
+using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -34,7 +35,6 @@ public class TobetoPlatformFinalProjectContext : DbContext
     public DbSet<Language> Languages { get; set; }
     public DbSet<LanguageLevel> LanguageLevels { get; set; }
     public DbSet<LanguageType> LanguageTypes { get; set; }
-    public DbSet<Role> Roles { get; set; }
     public DbSet<Situation> Situations { get; set; }
     public DbSet<SocialMedia> SocialMedias { get; set; }
     public DbSet<SocialMediaName> SocialMediaNames { get; set; }
@@ -44,7 +44,10 @@ public class TobetoPlatformFinalProjectContext : DbContext
     public DbSet<SyncCourseContent> SyncCourseContents { get; set; }
     public DbSet<SyncCourseDepartment> SyncCourseDepartments { get; set; }
     public DbSet<SyncCourseInstructor> SyncCourseInstructors { get; set; }
+    //14
     public DbSet<User> Users { get; set; }
+    public DbSet<OperationClaim> OperationClaims { get; set; }
+    public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
 
 
     public TobetoPlatformFinalProjectContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
