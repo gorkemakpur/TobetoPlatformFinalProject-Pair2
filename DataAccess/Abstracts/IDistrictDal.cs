@@ -8,12 +8,4 @@ namespace DataAccess.Abstracts
 
     }
 
-
-    //AnnouncementUser
-    //City
-    //District
-    //User
-    //    Role
-
-
 }

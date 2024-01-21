@@ -1,16 +1,13 @@
-﻿using Core.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concretes
+namespace Core.Entities.Concrete
 {
     public class OperationClaim : Entity<Guid>
     {
-        //14
         public string Name { get; set; }
-        public ICollection<UserOperationClaim> Users { get; set; }
     }
 }

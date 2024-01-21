@@ -1,4 +1,5 @@
-﻿using Microsoft.Identity.Client;
+﻿using Core.Entities.Concrete;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Core.Utilities.Security.JWT
 {
     public interface ITokenHelper
     {
-        AccessToken CreateToken(User user,List<OperationClaim>);
+        AccessToken CreateToken(User user,List<OperationClaim> operationClaims);
 
-    }
+     }
 }

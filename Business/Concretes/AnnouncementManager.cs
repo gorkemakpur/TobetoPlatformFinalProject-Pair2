@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
+using Business.BusinessAspects.Autofac;
 using Business.Dtos.Announcement.Request;
 using Business.Dtos.Announcement.Response;
 using Business.Dtos.AnnouncementType.Response;
@@ -31,8 +32,9 @@ namespace Business.Concretes
             _mapper = mapper;
             _announcementBusinessRules = announcementBusinessRules;
         }
+
         //claim -> iddia etmek, kullanıcının belirtilen şeylerden birine sahip olması gerekiyor
-        //[SecuredOperation("admin,editor")]
+        [SecuredOperation("admin,editor")]
         [ValidationAspect(typeof(CreateAnnouncementValidator))]
         public async Task<CreatedAnnouncementResponse> AddAsync(CreateAnnouncementRequest createAnnouncementRequest)
         {

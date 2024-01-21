@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Core.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace Entities.Concretes
     {
         public Guid DepartmentId { get; set; }
         public Guid UserId { get; set; }
-
+        
 
         public User? User{ get; set; }
         public Department? Department { get; set; }
