@@ -37,19 +37,19 @@ namespace Business.Concretes
 
         public async Task<User> Register(RegisterAuthRequest userForRegisterDto, string password)
         {
-            User user = _mapper.Map<User>(userForRegisterDto);
-
+            //User user = _mapper.Map<User>(userForRegisterDto);
+            User user = new User();
             byte[] passwordHash, passwordSalt;
-             HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            HashingHelper.CreatePasswordHash(userForRegisterDto.Password, out passwordHash, out passwordSalt);
+            user.FirstName = userForRegisterDto.FirstName;
+            user.LastName = userForRegisterDto.LastName;
+            user.Email = userForRegisterDto.Email;
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
+            user.Status = true;
 
-            CreateUserRequest createUserRequest = _mapper.Map<CreateUserRequest>(user);
-
-            await _userService.AddAsync(createUserRequest);
-
+            await _userService.Add(user);
             return user;
-            //return new SuccessDataResult<User>(user, Messages.UserRegistered);
         }
 
         public async Task<User> Login(LoginAuthRequest userForLoginDto)
@@ -72,9 +72,9 @@ namespace Business.Concretes
         }
 
 
-        public Task UserExists(string email)
+        public async Task UserExists(string email)
         {
-            if (_userService.GetByMailAsync(email) != null)
+            if (await _userService.GetByMailAsync(email) != null)
             {
                 throw new BusinessException(Messages.UserAlreadyExists);
             }

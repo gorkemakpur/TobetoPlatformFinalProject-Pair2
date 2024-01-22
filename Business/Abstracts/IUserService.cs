@@ -9,7 +9,7 @@ namespace Business.Abstracts
     {   //14
         Task<GetUserResponse> GetAsync(Guid id);
         Task<List<OperationClaim>> GetClaims(User user);
-        Task<GetUserResponse> Add(CreateUserRequest createUserRequest);
+        Task<GetUserResponse> Add(User user);
         Task<GetUserResponse> GetByMailAsync(string email);
         //--
         Task<CreatedUserResponse> AddAsync(CreateUserRequest createUserRequest);
