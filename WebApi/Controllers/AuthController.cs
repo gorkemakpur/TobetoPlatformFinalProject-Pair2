@@ -30,7 +30,7 @@ namespace WebApi.Controllers
             //await _authService.UserExists(userForRegisterDto.Email); //user kontrol
             var registerResult = await _authService.Register(userForRegisterDto, userForRegisterDto.Password);
 
-            var result = _authService.CreateAccessToken(registerResult);
+            var result = await _authService.CreateAccessToken(registerResult);
             if (result != null)
             {
                 return Ok(result);

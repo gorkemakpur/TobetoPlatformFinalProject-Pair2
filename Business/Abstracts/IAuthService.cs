@@ -14,7 +14,6 @@ namespace Business.Abstracts
     public interface IAuthService
     {
         Task<User> Register(RegisterAuthRequest userForRegisterDto, string password);
-
         Task<User> Login(LoginAuthRequest loginAuthRequest);
         Task UserExists(string email);
         Task<AccessToken> CreateAccessToken(User user);

@@ -25,11 +25,10 @@ namespace Business.Concretes
 
 
         //14
-        public async Task<GetUserResponse> Add(CreateUserRequest createUserRequest)
+        public async Task<GetUserResponse> Add(User user)
         {
-            User user = _mapper.Map<User>(createUserRequest);//direk createuseri ekleyemiyorum hata veriyor
             await _userDal.AddAsync(user);
-            GetUserResponse response = _mapper.Map<GetUserResponse>(createUserRequest);
+            GetUserResponse response = _mapper.Map<GetUserResponse>(user);
             return response;
         }
 
