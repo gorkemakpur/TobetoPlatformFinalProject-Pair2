@@ -4,7 +4,7 @@ using Business;
 using Business.DependencyResolvers.Autofac;
 //using Core.CrossCuttingConcerns.Exceptions.Extensions;
 using Core.Extensions;
-using Core.Utilities.DependencyResolvers;
+using Core.DependencyResolvers;
 using Core.Utilities.IoC;
 using Core.Utilities.Security.Encryption;
 using Core.Utilities.Security.JWT;
