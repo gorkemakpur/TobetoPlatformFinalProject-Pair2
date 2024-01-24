@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace Core.Entities.Concrete
 {
-    public class UserOperationClaim : Entity<Guid>
+    public class UserOperationClaim : Entity<int>
     {
         public Guid UserId { get; set; }
-        public Guid OperationClaimId { get; set; }
+        public int OperationClaimId { get; set; }
+
+        public User? User { get; set; }
+        public OperationClaim? OperationClaim { get; set; }
     }
 }
