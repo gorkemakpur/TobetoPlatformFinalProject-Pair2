@@ -34,7 +34,7 @@ namespace Business.Concretes
         }
 
         //claim -> iddia etmek, kullanıcının belirtilen şeylerden birine sahip olması gerekiyor
-        [SecuredOperation("admin,editor")]
+        [SecuredOperation("Admin,editor")]
         [ValidationAspect(typeof(CreateAnnouncementValidator))]
         public async Task<CreatedAnnouncementResponse> AddAsync(CreateAnnouncementRequest createAnnouncementRequest)
         {
