@@ -67,8 +67,8 @@ namespace Business.Concretes
             {
                 throw new BusinessException(Messages.PasswordError);
             }
-
-            return user;
+            var userResponse = _mapper.Map<User>(userToCheck);
+            return userResponse;
         }
 
 
