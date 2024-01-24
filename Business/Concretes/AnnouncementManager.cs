@@ -4,13 +4,17 @@ using Business.BusinessAspects.Autofac;
 using Business.Dtos.Announcement.Request;
 using Business.Dtos.Announcement.Response;
 using Business.Dtos.AnnouncementType.Response;
+using Business.Messagess;
 using Business.Rules;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.DataAccess.Paging;
 using Core.DataAccess.Repositories;
+using Core.Utilities.Results;
 using DataAccess.Abstracts;
 using DataAccess.Concretes.EntityFramework;
 using Entities.Concretes;
@@ -58,6 +62,7 @@ namespace Business.Concretes
         }
 
         [CacheAspect]
+        [PerformanceAspect(5)]//5 saniyeden uzun sürerse uyar bunu aspectinterceptor içinde de yazıp tüm projeye dahil edebiliriz loglama gibi
         public async Task<GetByIdAnnouncementResponse> GetByIdAsync(Guid id)
         {
             var data = await _announcementDal.GetAsync(
@@ -90,6 +95,15 @@ namespace Business.Concretes
             UpdatedAnnouncementResponse updatedAnnouncementResponse = _mapper.Map<UpdatedAnnouncementResponse>(updatedAnnouncement);
 
             return updatedAnnouncementResponse;
+        }
+
+        [TransactionScopeAspect]
+        public async Task<Announcement> TransactionalOperation(Announcement announcement)
+        {
+            await _announcementDal.UpdateAsync(announcement);
+            await _announcementDal.AddAsync(announcement);
+
+            return announcement;
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
 using Core.Utilities.IoC;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 namespace Core.Aspects.Autofac.Performance
 {
     public class PerformanceAspect : MethodInterception
-    {/*
+    {
         private int _interval;
         private Stopwatch _stopwatch;
 
@@ -34,6 +35,6 @@ namespace Core.Aspects.Autofac.Performance
                 Debug.WriteLine($"Performance : {invocation.Method.DeclaringType.FullName}.{invocation.Method.Name}-->{_stopwatch.Elapsed.TotalSeconds}");
             }
             _stopwatch.Reset();
-        }*/
+        }
     }
 }
