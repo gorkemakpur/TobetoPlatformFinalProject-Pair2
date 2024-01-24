@@ -14,5 +14,7 @@ namespace Business.Abstracts
         Task<UpdatedAnnouncementResponse> UpdateAsync(UpdateAnnouncementRequest updateAnnouncementRequest);
         Task<IPaginate<GetListAnnouncementResponse>> GetListAsync(PageRequest pageRequest);
         Task<GetByIdAnnouncementResponse> GetByIdAsync(Guid id);
+
+        Task<Announcement> TransactionalOperation(Announcement announcement);
     }
 }
