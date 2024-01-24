@@ -15,6 +15,6 @@
 
         public static string AuthorizationDenied = "Yetkiniz yok";
         public static string Success = "Başarılı";
-
+        public static string LimitUnBound = "Limit aşıldı";
     }
 }

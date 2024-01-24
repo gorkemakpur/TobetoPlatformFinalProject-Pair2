@@ -67,7 +67,7 @@ namespace Business.Concretes
             return result;
         }
 
-        //Tüm veriler
+        //[CacheAspect] //inmemory cache kullanacağız  //key, value : key=> cache e verilen isim , value => 
         public async Task<IPaginate<GetListAnnouncementResponse>> GetListAsync(PageRequest pageRequest)
         {
             //bağlantılı kısımları göstermek için include kullanıyoruz

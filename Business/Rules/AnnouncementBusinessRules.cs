@@ -1,5 +1,6 @@
 ﻿using Business.Abstracts;
 using Business.Dtos.Announcement.Response;
+using Business.Messagess;
 using Core.Business.Rules;
 using Core.CrossCuttingConcerns.Exceptions.Types;
 using Core.DataAccess.Paging;
@@ -31,7 +32,7 @@ namespace Business.Rules
             var result = await _announcementDal.GetListAsync();
             if (result.Count == 10)
             {
-                throw new BusinessException("Limit aşıldı");
+                throw new BusinessException(Messages.LimitUnBound);
             }
         }
 
