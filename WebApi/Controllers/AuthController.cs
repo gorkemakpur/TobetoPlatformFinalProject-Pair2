@@ -27,16 +27,17 @@ namespace WebApi.Controllers
         [HttpPost("register")]
         public async Task<ActionResult> Register([FromBody] RegisterAuthRequest userForRegisterDto)
         {
-            //await _authService.UserExists(userForRegisterDto.Email); //user kontrol
+            await _authService.UserExists(userForRegisterDto.Email); //user kontrol
+
             var registerResult = await _authService.Register(userForRegisterDto, userForRegisterDto.Password);
 
             var result = await _authService.CreateAccessToken(registerResult);
+
             if (result != null)
             {
                 return Ok(result);
             }
-
-            return Ok(registerResult);
+            return BadRequest(registerResult);
         }
     }
 }
