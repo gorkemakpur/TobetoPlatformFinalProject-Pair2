@@ -20,7 +20,7 @@ namespace WebApi.Controllers
         public async Task<ActionResult> Login([FromBody] LoginAuthRequest userForLoginDto)
         {
             var userToLogin = await _authService.Login(userForLoginDto); //logine datalar gönderilip bir değişkene alınıyor
-            var result = _authService.CreateAccessToken(userToLogin);//değişkendeki değerler ile accesstoken oluşturuluyor
+            var result = await _authService.CreateAccessToken(userToLogin);//değişkendeki değerler ile accesstoken oluşturuluyor
             return Ok(result);
         }
 
