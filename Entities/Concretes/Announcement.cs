@@ -10,6 +10,7 @@ namespace Entities.Concretes
     public class Announcement : Entity<Guid>
     {
         public Guid AnnouncementTypeId { get; set; }
+        public string AnnouncementName { get; set; }
         public string Description { get; set; }
         public DateTime SendDate { get; set; } = DateTime.Now;
 
