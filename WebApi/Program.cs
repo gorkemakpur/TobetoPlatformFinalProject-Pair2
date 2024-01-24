@@ -2,7 +2,10 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Business;
 using Business.DependencyResolvers.Autofac;
-using Core.CrossCuttingConcerns.Exceptions.Extensions;
+//using Core.CrossCuttingConcerns.Exceptions.Extensions;
+using Core.Extensions;
+using Core.Utilities.DependencyResolvers;
+using Core.Utilities.IoC;
 using Core.Utilities.Security.Encryption;
 using Core.Utilities.Security.JWT;
 using DataAccess;
@@ -48,6 +51,9 @@ namespace WebApi
                     };
                 });
 
+            builder.Services.AddDependencyResolvers(new ICoreModule[] { 
+                new CoreModule()
+            });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -68,7 +74,7 @@ namespace WebApi
 
             app.UseAuthorization();
 
-            app.ConfigureCustomExceptionMiddleware();
+            //app.ConfigureCustomExceptionMiddleware(); // burasý neden hatalý ? middleware eklendi mi bilmiyorum
 
             app.MapControllers();
             
