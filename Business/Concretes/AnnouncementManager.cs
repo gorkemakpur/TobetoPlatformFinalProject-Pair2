@@ -6,6 +6,7 @@ using Business.Dtos.Announcement.Response;
 using Business.Dtos.AnnouncementType.Response;
 using Business.Rules;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.DataAccess.Paging;
@@ -33,9 +34,9 @@ namespace Business.Concretes
             _announcementBusinessRules = announcementBusinessRules;
         }
 
-        //claim -> iddia etmek, kullanıcının belirtilen şeylerden birine sahip olması gerekiyor
-        [SecuredOperation("Admin,editor")]
+        [SecuredOperation("Admin")]
         [ValidationAspect(typeof(CreateAnnouncementValidator))]
+        [CacheRemoveAspect("IAnnouncementService.Get")]
         public async Task<CreatedAnnouncementResponse> AddAsync(CreateAnnouncementRequest createAnnouncementRequest)
         {
             //rules örnek
@@ -47,6 +48,7 @@ namespace Business.Concretes
             return createdAnnouncement;
         }
 
+        [CacheRemoveAspect("IAnnouncementService.Get")]
         public async Task<DeletedAnnouncementResponse> DeleteAsync(DeleteAnnouncementRequest deleteAnnouncementRequest)
         {
             Announcement removeAnnouncement = await _announcementDal.GetAsync(predicate: a => a.Id == deleteAnnouncementRequest.Id);
@@ -55,7 +57,7 @@ namespace Business.Concretes
             return deletedAnnouncementResponse;
         }
 
-        //girilen id deki değer
+        [CacheAspect]
         public async Task<GetByIdAnnouncementResponse> GetByIdAsync(Guid id)
         {
             var data = await _announcementDal.GetAsync(
@@ -67,23 +69,21 @@ namespace Business.Concretes
             return result;
         }
 
-        //[CacheAspect] //inmemory cache kullanacağız  //key, value : key=> cache e verilen isim , value => 
+        [CacheAspect] //inmemory cache kullanacağız  //key, value : key=> cache e verilen isim , value => değeri
         public async Task<IPaginate<GetListAnnouncementResponse>> GetListAsync(PageRequest pageRequest)
         {
-            //bağlantılı kısımları göstermek için include kullanıyoruz
-            //burada diğer tablodaki kısımı alamadım
             var data = await _announcementDal.GetListAsync(include: p => p.Include(p => p.AnnouncementType),
                 index: 0,//pageRequest.PageIndex,
                 size: 10 //pageRequest.PageSize
                 );
-
             var result = _mapper.Map<Paginate<GetListAnnouncementResponse>>(data);
             return result;
         }
 
+        //bellekteki IAnnouncementService içerisinde Get olan tüm keyleri sil çünkü veri değişti 
+        [CacheRemoveAspect("IAnnouncementService.Get")]
         public async Task<UpdatedAnnouncementResponse> UpdateAsync(UpdateAnnouncementRequest updateAnnouncementRequest)
         {
-            //bu kısıma bakılacak eksiklik var bütün değerleri girmeden istediğimiz değer ile update etme kısmına bakılacak
             Announcement updateAnnouncement = await _announcementDal.GetAsync(p => p.Id == updateAnnouncementRequest.Id);
             _mapper.Map(updateAnnouncementRequest, updateAnnouncement);
             Announcement updatedAnnouncement = await _announcementDal.UpdateAsync(updateAnnouncement);
