@@ -77,7 +77,6 @@ namespace Business.Concretes
             {
                 throw new BusinessException(Messages.UserAlreadyExists);
             }
-            throw new BusinessException(Messages.Success);
         }
 
         public async Task<AccessToken> CreateAccessToken(User user)
