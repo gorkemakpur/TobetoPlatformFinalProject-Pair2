@@ -54,7 +54,6 @@ namespace Business.Concretes
 
         public async Task<User> Login(LoginAuthRequest userForLoginDto)
         {
-            User user = _mapper.Map<User>(userForLoginDto);
             //useri getiriyoruz mailiyle
             var userToCheck = await _userService.GetByMailAsync(userForLoginDto.Email);
             
