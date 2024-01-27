@@ -44,9 +44,14 @@ namespace Business
             services.AddScoped<ISyncCourseContentService, SyncCourseContentManager>();
             services.AddScoped<ISyncCourseDepartmentService, SyncCourseDepartmentManager>();
             services.AddScoped<ISyncCourseInstructorService, SyncCourseInstructorManager>();
+
+            services.AddScoped<IStudentInformationService, StudentInformationManager>();
             //14
             services.AddScoped<IAuthService, AuthManager>();
             services.AddScoped<IUserService, UserManager>();
+            services.AddScoped<IOperationClaimService, OperationClaimManager>();
+            services.AddScoped<IUserOperationClaimService, UserOperationClaimManager>();
+
             services.AddScoped<ITokenHelper, JwtHelper>();
             #endregion
 
