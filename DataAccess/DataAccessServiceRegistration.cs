@@ -49,6 +49,10 @@ namespace DataAccess
             services.AddScoped<ISyncCourseDepartmentDal, EfSyncCourseDepartmentDal>();
             services.AddScoped<ISyncCourseInstructorDal, EfSyncCourseInstructorDal>();
 
+            services.AddScoped<IStudentInformationDal, EfStudentInformationDal>();
+            services.AddScoped<IOperationClaimDal, EfOperationClaimDal>();
+            services.AddScoped<IUserOperationClaimDal, EfUserOperationClaimDal>();
+
             return services;
         }
 
