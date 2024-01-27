@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Azure.Core;
 using Business.Abstracts;
 using Business.Dtos.User.Request;
 using Business.Dtos.User.Response;
@@ -49,10 +48,6 @@ namespace Business.Concretes
             var result = await _userDal.GetClaims(user);
             return result;
         }
-
-
-
-
         //--
 
         public async Task<CreatedUserResponse> AddAsync(CreateUserRequest createUserRequest)
@@ -80,10 +75,6 @@ namespace Business.Concretes
         }
 
       
-
-
-
-        //girilen id deki değer
         public async Task<GetByIdUserResponse> GetByIdAsync(Guid id)
         {
             var data = await _userDal.GetAsync(
@@ -96,17 +87,9 @@ namespace Business.Concretes
 
        
 
-
-
-        //Tüm veriler
         public async Task<IPaginate<GetListUserResponse>> GetListAsync(PageRequest pageRequest)
         {
-            //bağlantılı kısımları göstermek için include kullanıyoruz
-            //burada diğer tablodaki kısımı alamadım
-            var data = await _userDal.GetListAsync(
-                index: 0,//pageRequest.PageIndex,
-                size: 10 //pageRequest.PageSize
-                );
+            var data = await _userDal.GetListAsync();
 
             var result = _mapper.Map<Paginate<GetListUserResponse>>(data);
             return result;
