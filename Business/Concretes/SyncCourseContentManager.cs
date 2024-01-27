@@ -30,14 +30,12 @@ public class SyncCourseContentManager : ISyncCourseContentService
     {
         SyncCourseContent removeSyncCourseContent = await _syncCourseContentDal.GetAsync(predicate: c => c.Id == deleteSyncCourseContentRequest.Id);
         await _syncCourseContentDal.DeleteAsync(removeSyncCourseContent);
-
         DeletedSyncCourseContentResponse deletedSyncCourseContentResponse = _mapper.Map<DeletedSyncCourseContentResponse>(deleteSyncCourseContentRequest);
         return deletedSyncCourseContentResponse;
     }
 
     public async Task<GetByIdSyncCourseContentResponse> GetByIdAsync(Guid id)
     {
-
         SyncCourseContent result = await _syncCourseContentDal.GetAsync(predicate:c => c.Id == id);
         GetByIdSyncCourseContentResponse data = _mapper.Map<GetByIdSyncCourseContentResponse>(result);
         return data;
@@ -58,10 +56,8 @@ public class SyncCourseContentManager : ISyncCourseContentService
     {
         SyncCourseContent updateSyncCourseContent = await _syncCourseContentDal.GetAsync(predicate:c => c.Id == updateSyncCourseContentRequest.Id);
         _mapper.Map(updateSyncCourseContentRequest, updateSyncCourseContent);
-
         SyncCourseContent updatedSyncCourseContent = await _syncCourseContentDal.UpdateAsync(updateSyncCourseContent);
         UpdatedSyncCourseContentResponse updatedSyncCourseContentResponse = _mapper.Map<UpdatedSyncCourseContentResponse>(updatedSyncCourseContent);
-
         return updatedSyncCourseContentResponse;
     }
 }
