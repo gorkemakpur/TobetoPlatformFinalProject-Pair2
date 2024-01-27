@@ -16,22 +16,18 @@ namespace DataAccess.EntityConfiguration
             builder.Property(i => i.FirstName).HasColumnName("FirstName").IsRequired();
             builder.Property(i => i.LastName).HasColumnName("LastName").IsRequired();
             builder.Property(i => i.Email).HasColumnName("Email").IsRequired();
-            builder.Property(i => i.Email).HasColumnName("Password").IsRequired();
-            builder.Property(i => i.Email).HasColumnName("ConfirmPassword").IsRequired();
-            builder.Property(i => i.Email).HasColumnName("BirthDate").IsRequired();
-            builder.Property(i => i.Email).HasColumnName("NationalityId").IsRequired();
-            builder.Property(i => i.Email).HasColumnName("PhoneNumber").IsRequired();
-            builder.Property(i => i.Email).HasColumnName("About").IsRequired();
-            builder.Property(i => i.Email).HasColumnName("Country").IsRequired();
-            builder.Property(i => i.Email).HasColumnName("AddressDescription").IsRequired();
+            builder.Property(i => i.PasswordSalt).HasColumnName("PasswordSalt").IsRequired();
+            builder.Property(i => i.PasswordHash).HasColumnName("PasswordHash").IsRequired();
+            builder.Property(i => i.Status).HasColumnName("Status").IsRequired();
 
 
             //İlişki
+            builder.HasMany(i => i.UserOperationClaims);
 
 
 
-
-            builder.HasQueryFilter(i => !i.DeletedDate.HasValue);
+        builder.HasQueryFilter(i => !i.DeletedDate.HasValue);
         }
     }
+
 }
