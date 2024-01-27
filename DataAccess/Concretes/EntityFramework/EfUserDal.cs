@@ -9,7 +9,6 @@ namespace DataAccess.Concretes.EntityFramework
 {
     public class EfUserDal : EfRepositoryBase<User, Guid, TobetoPlatformFinalProjectContext>, IUserDal
     {
-        //14 den farklı
         public EfUserDal(TobetoPlatformFinalProjectContext context) : base(context)
         {
         }
@@ -21,7 +20,7 @@ namespace DataAccess.Concretes.EntityFramework
                                  on operationClaim.Id equals userOperationClaim.OperationClaimId
                              where userOperationClaim.UserId == user.Id
                              select new OperationClaim { Id = operationClaim.Id, Name = operationClaim.Name };
-                return await result.ToListAsync();//bu kısım farklı?
+                return await result.ToListAsync();
         }
     }
 }
