@@ -12,5 +12,4 @@ namespace Business.Abstracts
         Task<IPaginate<GetListSyncCourseResponse>> GetListAsync(PageRequest pageRequest);
         Task<GetByIdSyncCourseResponse> GetByIdAsync(Guid id);
     }
-
 }
