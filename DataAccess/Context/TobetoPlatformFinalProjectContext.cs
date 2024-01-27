@@ -39,6 +39,7 @@ public class TobetoPlatformFinalProjectContext : DbContext
     public DbSet<SocialMedia> SocialMedias { get; set; }
     public DbSet<SocialMediaName> SocialMediaNames { get; set; }
     public DbSet<Student> Students { get; set; }
+    public DbSet<StudentInformation> StudentInformations { get; set; }
     public DbSet<Survey> Surveys { get; set; }
     public DbSet<SyncCourse> SyncCourses { get; set; }
     public DbSet<SyncCourseContent> SyncCourseContents { get; set; }
@@ -53,7 +54,7 @@ public class TobetoPlatformFinalProjectContext : DbContext
     public TobetoPlatformFinalProjectContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
     {
         Configuration = configuration;
-        Database.EnsureCreated();
+        //Database.EnsureCreated(); 
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
