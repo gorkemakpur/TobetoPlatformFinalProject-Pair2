@@ -41,9 +41,11 @@ namespace Business.Concretes
             return _mapper.Map<UpdatedAnnouncementUserResponse>(result);
         }
 
-        public async Task<IPaginate<GetListAnnouncementUserResponse>> GetListAsync()
+        public async Task<IPaginate<GetListAnnouncementUserResponse>> GetListAsync(PageRequest pageRequest)
         {
-            var announcementUsers = await _announcementUserDal.GetListAsync();
+            var announcementUsers = await _announcementUserDal.GetListAsync(index: 0,//pageRequest.PageIndex,
+                                                          size: 10 //pageRequest.PageSize
+    );
             return _mapper.Map<Paginate<GetListAnnouncementUserResponse>>(announcementUsers);
         }
         
