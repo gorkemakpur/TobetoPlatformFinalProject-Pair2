@@ -8,8 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
-    //controller oluştururken burası basecontrollerdan miras alıp otomatik controller olacak şekilde tasarlandı
-    //düz class oluşturduktan sonra basecontroller üzerinden miras alıp hızlıca onun api olduğunu tanıtabiliriz
     public class SyncCourseContentsController : BaseController
     {
         ISyncCourseContentService _syncCourseContentService;
