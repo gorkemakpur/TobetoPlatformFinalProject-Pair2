@@ -25,6 +25,16 @@ namespace WebApi
             builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
             builder.Host.ConfigureContainer<ContainerBuilder>(myBuilder => myBuilder.RegisterModule(new AutofacBusinessModule()));
 
+            //cors
+            builder.Services.AddCors(option =>
+            {
+                option.AddDefaultPolicy(configure =>
+                {
+                    configure.AllowAnyOrigin();
+                    configure.AllowAnyHeader();
+                });
+            });
+            //--
 
             builder.Services.AddControllers();
 
@@ -68,13 +78,15 @@ namespace WebApi
                 app.UseSwaggerUI();
             }
 
+            app.UseCors();  
+
             app.UseHttpsRedirection();
 
             app.UseAuthentication();
 
             app.UseAuthorization();
 
-            //app.ConfigureCustomExceptionMiddleware(); // burasý neden hatalý ? middleware eklendi mi bilmiyorum
+            app.ConfigureCustomExceptionMiddleware(); // burasý neden hatalý ?
 
             app.MapControllers();
             
