@@ -38,9 +38,9 @@ namespace Business.Concretes
             _announcementBusinessRules = announcementBusinessRules;
         }
 
-        [SecuredOperation("Admin")]
+        /*[SecuredOperation("Admin")]
         [ValidationAspect(typeof(CreateAnnouncementValidator))]
-        [CacheRemoveAspect("IAnnouncementService.Get")]
+        [CacheRemoveAspect("IAnnouncementService.Get")]*/
         public async Task<CreatedAnnouncementResponse> AddAsync(CreateAnnouncementRequest createAnnouncementRequest)
         {
             //rules örnek
@@ -52,7 +52,7 @@ namespace Business.Concretes
             return createdAnnouncement;
         }
 
-        [CacheRemoveAspect("IAnnouncementService.Get")]
+        /*[CacheRemoveAspect("IAnnouncementService.Get")]*/
         public async Task<DeletedAnnouncementResponse> DeleteAsync(DeleteAnnouncementRequest deleteAnnouncementRequest)
         {
             Announcement removeAnnouncement = await _announcementDal.GetAsync(predicate: a => a.Id == deleteAnnouncementRequest.Id);
@@ -61,8 +61,10 @@ namespace Business.Concretes
             return deletedAnnouncementResponse;
         }
 
-        [CacheAspect]
+       /* [CacheAspect]
         [PerformanceAspect(5)]//5 saniyeden uzun sürerse uyar bunu aspectinterceptor içinde de yazıp tüm projeye dahil edebiliriz loglama gibi
+        */
+        
         public async Task<GetByIdAnnouncementResponse> GetByIdAsync(Guid id)
         {
             var data = await _announcementDal.GetAsync(
@@ -74,7 +76,7 @@ namespace Business.Concretes
             return result;
         }
 
-        [CacheAspect] //inmemory cache kullanacağız  //key, value : key=> cache e verilen isim , value => değeri
+        /*[CacheAspect] //inmemory cache kullanacağız  //key, value : key=> cache e verilen isim , value => değeri*/
         public async Task<IPaginate<GetListAnnouncementResponse>> GetListAsync(PageRequest pageRequest)
         {
             var data = await _announcementDal.GetListAsync(include: p => p.Include(p => p.AnnouncementType),
@@ -86,7 +88,7 @@ namespace Business.Concretes
         }
 
         //bellekteki IAnnouncementService içerisinde Get olan tüm keyleri sil çünkü veri değişti 
-        [CacheRemoveAspect("IAnnouncementService.Get")]
+        /*[CacheRemoveAspect("IAnnouncementService.Get")]*/
         public async Task<UpdatedAnnouncementResponse> UpdateAsync(UpdateAnnouncementRequest updateAnnouncementRequest)
         {
             Announcement updateAnnouncement = await _announcementDal.GetAsync(p => p.Id == updateAnnouncementRequest.Id);
@@ -97,7 +99,7 @@ namespace Business.Concretes
             return updatedAnnouncementResponse;
         }
 
-        [TransactionScopeAspect]
+       /* [TransactionScopeAspect]*/
         public async Task<Announcement> TransactionalOperation(Announcement announcement)
         {
             await _announcementDal.UpdateAsync(announcement);
