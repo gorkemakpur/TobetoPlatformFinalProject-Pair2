@@ -1,26 +1,33 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
+<<<<<<< Updated upstream
+=======
 using Business.Dtos.Certificate.Request;
 using Business.Dtos.Certificate.Response;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.DataAccess.Paging;
+>>>>>>> Stashed changes
 using DataAccess.Abstracts;
-using Entities.Concretes;
 
-namespace Business.Concretes;
-
-public class CertificateManager : ICertificateService
+namespace Business.Concretes
 {
-    private readonly ICertificateDal _certificateDal;
-    private readonly IMapper _mapper;
-
-    public CertificateManager(ICertificateDal certificateDal, IMapper mapper)
+    public class CertificateManager : ICertificateService
     {
-        _certificateDal = certificateDal;
-        _mapper = mapper;
+        private readonly ICertificateDal _certificateDal;
+        private readonly IMapper _mapper;
+
+        public CertificateManager(ICertificateDal certificateDal, IMapper mapper)
+        {
+            _certificateDal = certificateDal;
+            _mapper = mapper;
+        }
+
+        // İlgili metotlar
     }
 
+<<<<<<< Updated upstream
+=======
 
     [ValidationAspect(typeof(CreateCertificateRequestValidator))]
     public async Task<CreatedCertificateResponse> AddAsync(CreateCertificateRequest createCertificateRequest)
@@ -68,5 +75,5 @@ public class CertificateManager : ICertificateService
 
         return updatedCertificateResponse;
     }
-
+>>>>>>> Stashed changes
 }
