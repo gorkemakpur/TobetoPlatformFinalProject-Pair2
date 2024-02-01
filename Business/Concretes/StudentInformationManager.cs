@@ -31,6 +31,7 @@ namespace Business.Concretes
             _mapper = mapper;
         }
 
+        [ValidationAspect(typeof(CreateStudentInformationRequestValidator))]
         public async Task<CreatedStudentInformationResponse> AddAsync(CreateStudentInformationRequest createStudentInformationRequest)
         {
 
@@ -66,6 +67,7 @@ namespace Business.Concretes
             return result;
         }
 
+        [ValidationAspect(typeof(UpdateStudentInformationRequestValidator))]
         public async Task<UpdatedStudentInformationResponse> UpdateAsync(UpdateStudentInformationRequest updateStudentInformationRequest)
         {
             StudentInformation updateStudentInformation = await _studentInformationDal.GetAsync(p => p.Id == updateStudentInformationRequest.Id);

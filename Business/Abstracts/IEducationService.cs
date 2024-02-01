@@ -1,5 +1,8 @@
-﻿using Business.Dtos.Education.Request;
+﻿using Business.Dtos.Category.Request;
+using Business.Dtos.Category.Response;
+using Business.Dtos.Education.Request;
 using Business.Dtos.Education.Response;
+using Business.Dtos.Instructor.Response;
 using Core.DataAccess.Paging;
 
 namespace Business.Abstracts
