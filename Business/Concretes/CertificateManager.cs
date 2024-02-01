@@ -1,24 +1,35 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
+<<<<<<< Updated upstream
+=======
 using Business.Dtos.Certificate.Request;
 using Business.Dtos.Certificate.Response;
-
-
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.DataAccess.Paging;
+>>>>>>> Stashed changes
 using DataAccess.Abstracts;
-using Entities.Concretes;
 
-public class CertificateManager : ICertificateService
+namespace Business.Concretes
 {
-    private readonly ICertificateDal _certificateDal;
-    private readonly IMapper _mapper;
-
-    public CertificateManager(ICertificateDal certificateDal, IMapper mapper)
+    public class CertificateManager : ICertificateService
     {
-        _certificateDal = certificateDal;
-        _mapper = mapper;
+        private readonly ICertificateDal _certificateDal;
+        private readonly IMapper _mapper;
+
+        public CertificateManager(ICertificateDal certificateDal, IMapper mapper)
+        {
+            _certificateDal = certificateDal;
+            _mapper = mapper;
+        }
+
+        // İlgili metotlar
     }
 
+<<<<<<< Updated upstream
+=======
+
+    [ValidationAspect(typeof(CreateCertificateRequestValidator))]
     public async Task<CreatedCertificateResponse> AddAsync(CreateCertificateRequest createCertificateRequest)
     {
         Certificate addCertificate = _mapper.Map<Certificate>(createCertificateRequest);
@@ -38,7 +49,7 @@ public class CertificateManager : ICertificateService
 
     public async Task<GetByIdCertificateResponse> GetByIdAsync(Guid id)
     {
-        Certificate result = await _certificateDal.GetAsync(predicate:c => c.Id == id);
+        Certificate result = await _certificateDal.GetAsync(predicate: c => c.Id == id);
         GetByIdCertificateResponse data = _mapper.Map<GetByIdCertificateResponse>(result);
         return data;
     }
@@ -56,7 +67,7 @@ public class CertificateManager : ICertificateService
 
     public async Task<UpdatedCertificateResponse> UpdateAsync(UpdateCertificateRequest updateCertificateRequest)
     {
-        Certificate updateCertificate = await _certificateDal.GetAsync(predicate:c => c.Id == updateCertificateRequest.Id);
+        Certificate updateCertificate = await _certificateDal.GetAsync(predicate: c => c.Id == updateCertificateRequest.Id);
         _mapper.Map(updateCertificateRequest, updateCertificate);
 
         Certificate updatedCertificate = await _certificateDal.UpdateAsync(updateCertificate);
@@ -64,4 +75,5 @@ public class CertificateManager : ICertificateService
 
         return updatedCertificateResponse;
     }
+>>>>>>> Stashed changes
 }
