@@ -2,8 +2,6 @@
 using Business.Abstracts;
 using Business.Dtos.Experience.Request;
 using Business.Dtos.Experience.Response;
-using Business.ValidationRules.FluentValidation;
-using Core.Aspects.Autofac.Validation;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
@@ -21,7 +19,6 @@ namespace Business.Concretes
             _mapper = mapper;
         }
 
-        [ValidationAspect(typeof(CreateExperienceRequestValidator))]
         public async Task<CreatedExperienceResponse> AddAsync(CreateExperienceRequest createExperienceRequest)
         {
             var experience = _mapper.Map<Experience>(createExperienceRequest);
@@ -36,7 +33,6 @@ namespace Business.Concretes
             return _mapper.Map<DeletedExperienceResponse>(result);
         }
 
-        [ValidationAspect(typeof(UpdateExperienceRequestValidator))]
         public async Task<UpdatedExperienceResponse> UpdateAsync(UpdateExperienceRequest updateExperienceRequest)
         {
             var experience = await _experienceDal.GetAsync(x => x.Id == updateExperienceRequest.Id);
@@ -50,10 +46,10 @@ namespace Business.Concretes
             var experiences = await _experienceDal.GetListAsync();
             return _mapper.Map<Paginate<GetListExperienceResponse>>(experiences);
         }
-
+        
         public async Task<GetByIdExperienceResponse> GetByIdAsync(Guid id)
         {
-            var experience = await _experienceDal.GetAsync(x => x.Id == id);
+            var experience = await _experienceDal.GetAsync(x=>x.Id == id);
             return _mapper.Map<GetByIdExperienceResponse>(experience);
         }
     }

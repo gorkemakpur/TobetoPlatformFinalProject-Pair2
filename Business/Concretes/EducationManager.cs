@@ -2,8 +2,6 @@
 using Business.Abstracts;
 using Business.Dtos.Education.Request;
 using Business.Dtos.Education.Response;
-using Business.ValidationRules.FluentValidation;
-using Core.Aspects.Autofac.Validation;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
@@ -21,7 +19,6 @@ namespace Business.Concretes
             _mapper = mapper;
         }
 
-        [ValidationAspect(typeof(CreateEducationRequestValidator))]
         public async Task<CreatedEducationResponse> AddAsync(CreateEducationRequest createEducationRequest)
         {
             var education = _mapper.Map<Education>(createEducationRequest);
@@ -36,7 +33,6 @@ namespace Business.Concretes
             return _mapper.Map<DeletedEducationResponse>(result);
         }
 
-        [ValidationAspect(typeof(UpdateEducationRequestValidator))]
         public async Task<UpdatedEducationResponse> UpdateAsync(UpdateEducationRequest updateEducationRequest)
         {
             var education = await _educationDal.GetAsync(x => x.Id == updateEducationRequest.Id);
@@ -50,10 +46,10 @@ namespace Business.Concretes
             var educations = await _educationDal.GetListAsync();
             return _mapper.Map<Paginate<GetListEducationResponse>>(educations);
         }
-
+        
         public async Task<GetByIdEducationResponse> GetByIdAsync(Guid id)
         {
-            var education = await _educationDal.GetAsync(x => x.Id == id);
+            var education = await _educationDal.GetAsync(x=>x.Id == id);
             return _mapper.Map<GetByIdEducationResponse>(education);
         }
     }
