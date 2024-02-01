@@ -15,9 +15,6 @@ namespace Business.Abstracts
     {
         Task<User> Register(RegisterAuthRequest userForRegisterDto, string password);
         Task<User> Login(LoginAuthRequest loginAuthRequest);
-        Task<User> ForgetPassword(ForgetPasswordAuthRequest forgetPasswordAuthRequest);
-        Task<string> ResetPassword(ResetPasswordAuthRequest resetPasswordAuthRequest);
-        Task<string> UpdatePassword(UpdatePasswordAuthRequest updatePasswordAuthRequest, string password);
         Task UserExists(string email);
         Task<AccessToken> CreateAccessToken(User user);
     }

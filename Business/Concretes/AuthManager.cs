@@ -6,7 +6,6 @@ using Business.Dtos.Instructor.Request;
 using Business.Dtos.User.Request;
 using Business.Dtos.User.Response;
 using Business.Messagess;
-using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Exceptions.Types;
 using Core.Entities.Concrete;
@@ -36,7 +35,6 @@ namespace Business.Concretes
             _mapper = mapper;
         }
 
-        [ValidationAspect(typeof(RegisterAuthRequestValidator))]
         public async Task<User> Register(RegisterAuthRequest userForRegisterDto, string password)
         {
             //User user = _mapper.Map<User>(userForRegisterDto);
@@ -54,12 +52,11 @@ namespace Business.Concretes
             return user;
         }
 
-        [ValidationAspect(typeof(LoginAuthRequestValidator))]
         public async Task<User> Login(LoginAuthRequest userForLoginDto)
         {
             //useri getiriyoruz mailiyle
             var userToCheck = await _userService.GetByMailAsync(userForLoginDto.Email);
-
+            
             if (userToCheck == null)
             {
                 throw new BusinessException(Messages.UserNotFound);
@@ -73,38 +70,6 @@ namespace Business.Concretes
             return userResponse;
         }
 
-        [ValidationAspect(typeof(ForgetPasswordAuthRequestValidator))]
-        public async Task<User> ForgetPassword(ForgetPasswordAuthRequest forgetPasswordAuthRequest)
-        {
-            //useri getiriyoruz mailiyle
-            var userToCheck = await _userService.GetByMailAsync(forgetPasswordAuthRequest.Email);
-
-            if (userToCheck == null)
-            {
-                throw new BusinessException(Messages.UserNotFound);
-            }
-
-            //Parola sıfırlama linki gönder.
-
-            var userResponse = _mapper.Map<User>(userToCheck);
-            return userResponse;
-        }
-
-        [ValidationAspect(typeof(ResetPasswordAuthRequestValidator))]
-        public async Task<string> ResetPassword(ResetPasswordAuthRequest resetPasswordAuthRequest)
-        {
-            //Parolayı sıfırla.
-
-            return "Parola sıfırlandı.";
-        }
-
-        [ValidationAspect(typeof(UpdatePasswordAuthRequestValidator))]
-        public async Task<string> UpdatePassword(UpdatePasswordAuthRequest updatePasswordAuthRequest, string password)
-        {
-            //Eski parola eşleşiyorsa güncelle.
-
-            return "Parola güncellendi.";
-        }
 
         public async Task UserExists(string email)
         {
