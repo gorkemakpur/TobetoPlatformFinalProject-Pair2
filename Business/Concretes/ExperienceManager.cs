@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
+<<<<<<< Updated upstream
+=======
 using Business.Dtos.Experience.Request;
 using Business.Dtos.Experience.Response;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.DataAccess.Paging;
+>>>>>>> Stashed changes
 using DataAccess.Abstracts;
-using Entities.Concretes;
 
 namespace Business.Concretes
 {
@@ -21,6 +23,9 @@ namespace Business.Concretes
             _mapper = mapper;
         }
 
+<<<<<<< Updated upstream
+        // İlgili metotlar
+=======
         [ValidationAspect(typeof(CreateExperienceRequestValidator))]
         public async Task<CreatedExperienceResponse> AddAsync(CreateExperienceRequest createExperienceRequest)
         {
@@ -55,6 +60,7 @@ namespace Business.Concretes
             var experience = await _experienceDal.GetAsync(x => x.Id == id);
             return _mapper.Map<GetByIdExperienceResponse>(experience);
         }
+>>>>>>> Stashed changes
     }
 
 }
