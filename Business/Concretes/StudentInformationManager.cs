@@ -31,6 +31,7 @@ namespace Business.Concretes
             _mapper = mapper;
         }
 
+        [ValidationAspect(typeof(CreateStudentInformationRequestValidator))]
         public async Task<CreatedStudentInformationResponse> AddAsync(CreateStudentInformationRequest createStudentInformationRequest)
         {
 
