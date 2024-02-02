@@ -4,6 +4,7 @@ using Business.Dtos.Announcement.Request;
 using Business.Dtos.Announcement.Response;
 using Business.Dtos.Application.Request;
 using Business.Dtos.Application.Response;
+using Business.Rules;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using DataAccess.Concretes.EntityFramework;
@@ -15,11 +16,13 @@ namespace Business.Concretes
     {
         private readonly IApplicationDal _applicationDal;
         private readonly IMapper _mapper;
+        private readonly ApplicationBusinessRules _applicationBusinessRules;
 
-        public ApplicationManager(IApplicationDal applicationDal, IMapper mapper)
+        public ApplicationManager(IApplicationDal applicationDal, IMapper mapper, ApplicationBusinessRules applicationBusinessRules)
         {
             _applicationDal = applicationDal;
             _mapper = mapper;
+            _applicationBusinessRules = applicationBusinessRules;
         }
 
         public async Task<CreatedApplicationResponse> AddAsync(CreateApplicationRequest createApplicationRequest)
@@ -33,6 +36,7 @@ namespace Business.Concretes
         public async Task<DeletedApplicationResponse> DeleteAsync(DeleteApplicationRequest deleteApplicationRequest)
         {
             Application removeApplication = await _applicationDal.GetAsync(predicate: a => a.Id == deleteApplicationRequest.Id);
+            await _applicationBusinessRules.EnsureApplicationIsNotNull(removeApplication);
             await _applicationDal.DeleteAsync(removeApplication);
             DeletedApplicationResponse deletedApplicationResponse = _mapper.Map<DeletedApplicationResponse>(deleteApplicationRequest);
             return deletedApplicationResponse;
@@ -41,7 +45,7 @@ namespace Business.Concretes
         public async Task<GetByIdApplicationResponse> GetByIdAsync(Guid id)
         {
             var data = await _applicationDal.GetAsync(predicate: p => p.Id == id);
-
+            await _applicationBusinessRules.EnsureApplicationIsNotNull(data);
             var result = _mapper.Map<GetByIdApplicationResponse>(data);
             return result;
         }
@@ -60,6 +64,7 @@ namespace Business.Concretes
         {
             Application updateApplication = await _applicationDal.GetAsync(p => p.Id == updateApplicationRequest.Id);
             _mapper.Map(updateApplicationRequest, updateApplication);
+            await _applicationBusinessRules.EnsureApplicationIsNotNull(updateApplication);
             Application updatedApplication = await _applicationDal.UpdateAsync(updateApplication);
             UpdatedApplicationResponse updatedApplicationResponse = _mapper.Map<UpdatedApplicationResponse>(updatedApplication);
 
