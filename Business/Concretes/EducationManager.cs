@@ -1,14 +1,12 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
-<<<<<<< Updated upstream
-=======
 using Business.Dtos.Education.Request;
 using Business.Dtos.Education.Response;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.DataAccess.Paging;
->>>>>>> Stashed changes
 using DataAccess.Abstracts;
+using Entities.Concretes;
 
 namespace Business.Concretes
 {
@@ -23,9 +21,7 @@ namespace Business.Concretes
             _mapper = mapper;
         }
 
-<<<<<<< Updated upstream
-        // İlgili metotlar
-=======
+
         [ValidationAspect(typeof(CreateEducationRequestValidator))]
         public async Task<CreatedEducationResponse> AddAsync(CreateEducationRequest createEducationRequest)
         {
@@ -60,7 +56,6 @@ namespace Business.Concretes
             var education = await _educationDal.GetAsync(x => x.Id == id);
             return _mapper.Map<GetByIdEducationResponse>(education);
         }
->>>>>>> Stashed changes
     }
 
 }
