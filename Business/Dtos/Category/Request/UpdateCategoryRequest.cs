@@ -8,9 +8,7 @@ namespace Business.Dtos.Category.Request
 {
     public class UpdateCategoryRequest
     {
-        public string Name { get; set; }
         public Guid Id { get; set; }
-        public List<Guid>? SyncCourses { get; set; }
-        public List<Guid>? AsyncCourses { get; set; }
+        public string Name { get; set; }
     }
 }
