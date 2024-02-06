@@ -8,6 +8,8 @@ namespace Business.Dtos.AsyncCourse.Request
 {
     public class CreateAsyncCourseRequest
     {
+        public Guid CategoryId { get; set; }
         public string Name { get; set; }
+
     }
 }

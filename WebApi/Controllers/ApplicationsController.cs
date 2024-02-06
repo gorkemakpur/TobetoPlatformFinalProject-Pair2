@@ -1,6 +1,4 @@
 ﻿using Business.Abstracts;
-using Business.Dtos.Announcement.Request;
-using Business.Dtos.AnnouncementType.Request;
 using Business.Dtos.Application.Request;
 using Core.DataAccess.Paging;
 using Microsoft.AspNetCore.Mvc;
