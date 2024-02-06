@@ -42,6 +42,13 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetByMail([FromQuery] string email)
+        {
+            var result = await _userService.GetByMailAsync(email);
+            return Ok(result);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Update([FromQuery] UpdateUserRequest updateUserRequest)
         {
