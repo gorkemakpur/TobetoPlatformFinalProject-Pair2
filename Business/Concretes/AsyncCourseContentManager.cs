@@ -38,6 +38,16 @@ namespace Business.Concretes
             return deletedAsyncCourseContentResponse;
         }
 
+        public async Task<GetByAsyncCourseIdResponse> GetByAsynCourseId(Guid id)
+        {
+            var data = await _asyncCourseContentDal.GetAsync(
+                           predicate: p => p.AsyncCourseId == id,
+                           include: p => p.Include(p => p.Category
+                           ));
+            var result = _mapper.Map<GetByAsyncCourseIdResponse>(data);
+            return result;
+        }
+
         public async Task<GetByIdAsyncCourseContentResponse> GetByIdAsync(Guid id)
         {
             var data = await _asyncCourseContentDal.GetAsync(
