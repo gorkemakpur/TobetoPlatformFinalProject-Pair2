@@ -38,16 +38,30 @@ namespace Business.Concretes
             return deletedAsyncCourseContentResponse;
         }
 
-        public async Task<GetByAsyncCourseIdResponse> GetByAsynCourseId(Guid id)
+        public async Task<IPaginate<GetListAsyncCourseContentResponse>> GetByAsynCourseId(Guid id)
         {
-            var data = await _asyncCourseContentDal.GetAsync(
-                           predicate: p => p.AsyncCourseId == id,
-                           include: p => p.Include(p => p.Category
-                           ));
-            var result = _mapper.Map<GetByAsyncCourseIdResponse>(data);
+            var data = await _asyncCourseContentDal.GetListAsync(
+                            index: 0,
+                            size: 10,
+                            predicate: p => p.AsyncCourseId == id,
+                            include: p => p.Include(p => p.AsyncCourse)
+                           );
+
+            var result = _mapper.Map<Paginate<GetListAsyncCourseContentResponse>>(data);
+            //var result = _mapper.Map<Paginate<GetByAsyncCourseIdResponse>>(data); normali bu şekilde ama profile de çalışmıyor düzelmezse üstteki gibi devam edicez
             return result;
         }
 
+        public async Task<IPaginate<GetListAsyncCourseContentResponse>> GetListAsync(PageRequest pageRequest)
+        {
+            var data = await _asyncCourseContentDal.GetListAsync(
+                                    index: 0,//pageRequest.PageIndex,
+                                    size: 10 //pageRequest.PageSize
+                                );
+
+            var result = _mapper.Map<Paginate<GetListAsyncCourseContentResponse>>(data);
+            return result;
+        }
         public async Task<GetByIdAsyncCourseContentResponse> GetByIdAsync(Guid id)
         {
             var data = await _asyncCourseContentDal.GetAsync(
@@ -59,16 +73,7 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<IPaginate<GetListAsyncCourseContentResponse>> GetListAsync(PageRequest pageRequest)
-        {
-            var data = await _asyncCourseContentDal.GetListAsync(include: p => p.Include(p => p.Category),
-                                    index: 0,//pageRequest.PageIndex,
-                                    size: 10 //pageRequest.PageSize
-                                );
-
-            var result = _mapper.Map<Paginate<GetListAsyncCourseContentResponse>>(data);
-            return result;
-        }
+     
 
         public async Task<UpdatedAsyncCourseContentResponse> UpdateAsync(UpdateAsyncCourseContentRequest updateAsyncCourseContentRequest)
         {
