@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using Business.Dtos.Announcement.Request;
-using Business.Dtos.Announcement.Response;
 using Business.Dtos.AsyncCourseContent.Request;
 using Business.Dtos.AsyncCourseContent.Response;
 using Core.DataAccess.Paging;
@@ -24,9 +22,10 @@ namespace Business.Profiles
             //list
             CreateMap<AsyncCourseContent, GetListAsyncCourseContentResponse>().ReverseMap();
             CreateMap<AsyncCourseContent, GetByIdAsyncCourseContentResponse>().ReverseMap();
-            CreateMap<AsyncCourseContent, GetByAsyncCourseIdResponse>().ReverseMap();
 
-            CreateMap<IPaginate<AsyncCourseContent>, Paginate<GetListAsyncCourseContentResponse>>();
+            CreateMap<IPaginate<AsyncCourseContent>, Paginate<GetByAsyncCourseIdResponse>>().ReverseMap();
+            CreateMap<IPaginate<AsyncCourseContent>, Paginate<GetListAsyncCourseContentResponse>>().ReverseMap();
+
             //delete
             CreateMap<DeleteAsyncCourseContentRequest, DeletedAsyncCourseContentResponse>().ReverseMap();
             //update
