@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using Business.Dtos.Announcement.Request;
-using Business.Dtos.Announcement.Response;
 using Business.Dtos.AsyncCourseContent.Request;
 using Business.Dtos.AsyncCourseContent.Response;
 using Core.DataAccess.Paging;
@@ -18,17 +16,20 @@ namespace Business.Profiles
         public AsyncCourseContentMappingProfile()
         {
             //create
-            CreateMap<AsyncCourseContentMappingProfile, CreateAsyncCourseContentRequest>().ReverseMap();
-            CreateMap<AsyncCourseContentMappingProfile, CreatedAsyncCourseContentResponse>().ReverseMap();
+            CreateMap<AsyncCourseContent, CreateAsyncCourseContentRequest>().ReverseMap();
+            CreateMap<AsyncCourseContent, CreatedAsyncCourseContentResponse>().ReverseMap();
             CreateMap<CreatedAsyncCourseContentResponse, CreateAsyncCourseContentRequest>().ReverseMap();
             //list
-            CreateMap<AsyncCourseContentMappingProfile, GetListAsyncCourseContentResponse>().ReverseMap();
-            CreateMap<AsyncCourseContentMappingProfile, GetByIdAsyncCourseContentResponse>().ReverseMap();
-            CreateMap<IPaginate<AsyncCourseContentMappingProfile>, Paginate<GetListAsyncCourseContentResponse>>();
+            CreateMap<AsyncCourseContent, GetListAsyncCourseContentResponse>().ReverseMap();
+            CreateMap<AsyncCourseContent, GetByIdAsyncCourseContentResponse>().ReverseMap();
+
+            CreateMap<IPaginate<AsyncCourseContent>, Paginate<GetByAsyncCourseIdResponse>>().ReverseMap();
+            CreateMap<IPaginate<AsyncCourseContent>, Paginate<GetListAsyncCourseContentResponse>>().ReverseMap();
+
             //delete
             CreateMap<DeleteAsyncCourseContentRequest, DeletedAsyncCourseContentResponse>().ReverseMap();
             //update
-            CreateMap<AsyncCourseContentMappingProfile, UpdateAsyncCourseContentRequest>().ReverseMap();
+            CreateMap<AsyncCourseContent, UpdateAsyncCourseContentRequest>().ReverseMap();
             CreateMap<UpdateAsyncCourseContentRequest, UpdatedAsyncCourseContentResponse>().ReverseMap();
         }
     }
