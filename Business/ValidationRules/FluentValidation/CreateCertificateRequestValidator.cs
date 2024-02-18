@@ -17,7 +17,8 @@ namespace Business.ValidationRules.FluentValidation
         {
             RuleFor(x => x.Url)
                 .NotEmpty().WithMessage("Sertifika URL'si boş bırakılamaz.")
-                .Must(BeAValidFileType).WithMessage("Sadece image/jpeg, image/png, application/pdf yükleyebilirsiniz.");
+                //.Must(BeAValidFileType).WithMessage("Sadece image/jpeg, image/png, application/pdf yükleyebilirsiniz.")
+                ;
 
             RuleFor(x => x.Name)
                 .NotEmpty().WithMessage("Sertifika ismi boş bırakılamaz.");
