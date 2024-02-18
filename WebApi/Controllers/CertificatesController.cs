@@ -39,6 +39,13 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> GetListByUserId([FromQuery] PageRequest pageRequest, Guid userId)
+        {
+            var result = await _certificateService.GetListAsPageByUserId(pageRequest, userId);
+            return Ok(result);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> GetById([FromQuery] Guid id)
         {
             var result = await _certificateService.GetByIdAsync(id);
