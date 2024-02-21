@@ -24,6 +24,7 @@ namespace Business.Profiles
             CreateMap<Certificate, GetListCertificateResponse>().ReverseMap();
             CreateMap<Certificate, GetByIdCertificateResponse>().ReverseMap();
             CreateMap<IPaginate<Certificate>, Paginate<GetListCertificateResponse>>();
+
             //delete
             CreateMap<DeleteCertificateRequest, DeletedCertificateResponse>().ReverseMap();
             //update

@@ -34,7 +34,6 @@
     <Folder Include="Dtos\AsyncCourseDepartment\Response\" />
     <Folder Include="Dtos\Category\Request\" />
     <Folder Include="Dtos\Category\Response\" />
-    <Folder Include="Dtos\Certificate\Request\" />
     <Folder Include="Dtos\Certificate\Response\" />
     <Folder Include="Dtos\SocialMedia\Request\" />
     <Folder Include="Dtos\SocialMedia\Response\" />

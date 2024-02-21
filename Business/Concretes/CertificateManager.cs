@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Azure.Core;
 using Business.Abstracts;
 using Business.Dtos.Certificate.Request;
 using Business.Dtos.Certificate.Response;
@@ -7,6 +8,7 @@ using Core.Aspects.Autofac.Validation;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 
 namespace Business.Concretes;
 
@@ -52,6 +54,19 @@ public class CertificateManager : ICertificateService
         var data = await _certificateDal.GetListAsync(
             index: 0, // pageRequest.PageIndex,
             size: 10   // pageRequest.PageSize
+        );
+
+        var result = _mapper.Map<Paginate<GetListCertificateResponse>>(data);
+        return result;
+    }
+
+    public async Task<IPaginate<GetListCertificateResponse>> GetListAsPageByUserId(PageRequest pageRequest, Guid userId)
+    {
+        var data = await _certificateDal.GetListAsync(
+            x => x.Student.UserId == userId,
+                    include: query => query.Include(x => x.Student),
+            index: 0, // pageRequest.PageIndex,
+            size: 100   // pageRequest.PageSize
         );
 
         var result = _mapper.Map<Paginate<GetListCertificateResponse>>(data);
