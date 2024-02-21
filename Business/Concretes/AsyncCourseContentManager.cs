@@ -65,9 +65,8 @@ namespace Business.Concretes
         public async Task<GetByIdAsyncCourseContentResponse> GetByIdAsync(Guid id)
         {
             var data = await _asyncCourseContentDal.GetAsync(
-                            predicate: p => p.Id == id,
-                            include: p => p.Include(p => p.Category
-                            ));
+                            predicate: p => p.Id == id
+                            );
 
             var result = _mapper.Map<GetByIdAsyncCourseContentResponse>(data);
             return result;
